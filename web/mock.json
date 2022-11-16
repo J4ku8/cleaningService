@@ -1,0 +1,12 @@
+{
+  "myLocation": {
+    "lng": "",
+    "ltd": ""
+  },
+  "comapanies": [],
+  "reviews": [],
+  "ranking": [],
+  "strings": {
+    "hello": "hello"
+  }
+}
