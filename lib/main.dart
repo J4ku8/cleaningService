@@ -16,7 +16,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Dáme úklid',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
+        textTheme:
+        Theme.of(context).textTheme.apply(
+          bodyColor: Colors.white,
+        ),
       ),
       home: const MyHomePage(),
     );
@@ -41,8 +45,10 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
+      resizeToAvoidBottomInset : false,
       appBar: AppBar(
         title: const Text('Dáme úklid'),
+        backgroundColor: Colors.green,
         actions: <Widget>[
           IconButton(
             icon: const Icon(
@@ -96,7 +102,8 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
-      body: Center(
+      body:SingleChildScrollView(
+        child: Center(
         child: Column(
           //mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -165,31 +172,88 @@ class _MyHomePageState extends State<MyHomePage> {
                     ))
               ],
             ),
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 0.0),
-            //   child:
-            //     GridView.count(
-            //       // Create a grid with 2 columns. If you change the scrollDirection to
-            //       // horizontal, this produces 2 rows.
-            //       crossAxisCount: 2,
-            //       // Generate 100 widgets that display their index in the List.
-            //       children: List.generate(100, (index) {
-            //         return SizedBox(
-            //           height: 300,
-            //           width: MediaQuery.of(context).size.width/3,
-            //           child: Center(
-            //             child: Text(
-            //               'Item $index',
-            //               style: Theme.of(context).textTheme.headline5,
-            //             ),
-            //           ),
-            //         );
-            //       }),
-            //     ),
-            // )
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 0.0),
+              child:
+                GridView.count(
+                  primary: false,
+                  padding: const EdgeInsets.all(20),
+                  crossAxisSpacing: 10,
+                  shrinkWrap: true,
+                  mainAxisSpacing: 10,
+                  crossAxisCount: 2,
+                  childAspectRatio: 2,
+                  children: List.generate(15, (index) {
+                    return Container(
+                      height: 10.0,
+                      width: 15.0,
+                      decoration: BoxDecoration(
+                        color: Colors.white38,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: Colors.green)
+                    ),
+                        child: Center(
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                          foregroundColor: MaterialStateProperty.all<Color>(Colors.green),
+                          textStyle: MaterialStateProperty.all<TextStyle>(const TextStyle(color: Colors.white)),
+                        ),
+                        onPressed: () => showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                scrollable: true,
+                                title: const Text('Login'),
+                                content: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Form(
+                                    child: Column(
+                                      children: <Widget>[
+                                        TextFormField(
+                                          decoration: const InputDecoration(
+                                            labelText: 'Name',
+                                            icon: Icon(Icons.account_box),
+                                          ),
+                                        ),
+                                        TextFormField(
+                                          decoration: const InputDecoration(
+                                            labelText: 'Email',
+                                            icon: Icon(Icons.email),
+                                          ),
+                                        ),
+                                        TextFormField(
+                                          decoration: const InputDecoration(
+                                            labelText: 'Message',
+                                            icon: Icon(Icons.message ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                actions: [
+                                  OutlinedButton(
+                                      child: const Text("Close"),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      })
+                                ],
+                              );
+                            }),
+                        child: Text(
+                        'Order',
+                    style: Theme.of(context).textTheme.headline5,
+                    ),
+                          ),
+                        ),
+                      );
+                  }),
+                ),
+            )
           ],
         ),
       ),
+      )
     );
   }
 }
