@@ -11,10 +11,12 @@ import 'package:cleaning/model/Service.dart';
 import 'package:cleaning/model/User.dart';
 import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
+import 'package:date_field/date_field.dart';
+import 'maps.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
-void main() {
+main() {
   runApp(const MyApp());
 }
 
@@ -508,27 +510,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     SizedBox(
-                        height: 300,
-                        width: MediaQuery.of(context).size.width,
-                        child: FlutterMap(
-                          options: MapOptions(
-                            center: LatLng(50.105092, 14.389680),
-                            zoom: 15,
-                          ),
-                          nonRotatedChildren: [
-                            AttributionWidget.defaultWidget(
-                              source: 'OpenStreetMap contributors',
-                              onSourceTapped: null,
-                            ),
-                          ],
-                          children: [
-                            TileLayer(
-                              urlTemplate:
-                                  'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                              userAgentPackageName: 'com.example.app',
-                            ),
-                          ],
-                        ))
+                      height: 400,
+                      width: MediaQuery.of(context).size.width,
+                      child: GoogleMap(),
+                    )
                   ],
                 ),
                 Padding(
