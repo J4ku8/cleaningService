@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart';
 import 'package:date_field/date_field.dart';
+import 'maps.dart';
 
-void main() {
+main() {
   runApp(const MyApp());
 }
 
@@ -17,10 +16,9 @@ class MyApp extends StatelessWidget {
       title: 'Dáme úklid',
       theme: ThemeData(
         primarySwatch: Colors.green,
-        textTheme:
-        Theme.of(context).textTheme.apply(
-          bodyColor: Colors.white,
-        ),
+        textTheme: Theme.of(context).textTheme.apply(
+              bodyColor: Colors.white,
+            ),
       ),
       home: const MyHomePage(),
     );
@@ -35,7 +33,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -45,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      resizeToAvoidBottomInset : false,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text('Dáme úklid'),
         backgroundColor: Colors.green,
@@ -102,101 +99,79 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
-      body:SingleChildScrollView(
-        child: Center(
+      body: //SingleChildScrollView(
+          /*child:*/ Center(
         child: Column(
           //mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 0.0),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 0.0),
               child: SizedBox(
                 width: MediaQuery.of(context).size.width * 0.5,
-                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
-                    SizedBox(
-                      height: 50,
-                      width: 250,
-                      child: DateTimeFormField(
-                        decoration: const InputDecoration(
-                          hintStyle: TextStyle(color: Colors.black45),
-                          errorStyle: TextStyle(color: Colors.redAccent),
-                          border: OutlineInputBorder(),
-                          suffixIcon: Icon(Icons.event_note),
-                          labelText: 'Pick a date and time',
-                        ),
-                        mode: DateTimeFieldPickerMode.dateAndTime,
-                        autovalidateMode: AutovalidateMode.always,
-                        validator: (e) =>
-                            (e?.day ?? 0) == 1 ? 'Please not the first day' : null,
-                        onDateSelected: (DateTime value) {
-                          print(value);
-                        },
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 50,
-                      width: 250,
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: 'Enter a search term',
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      SizedBox(
+                        height: 50,
+                        width: 250,
+                        child: DateTimeFormField(
+                          decoration: const InputDecoration(
+                            hintStyle: TextStyle(color: Colors.black45),
+                            errorStyle: TextStyle(color: Colors.redAccent),
+                            border: OutlineInputBorder(),
+                            suffixIcon: Icon(Icons.event_note),
+                            labelText: 'Pick a date and time',
+                          ),
+                          mode: DateTimeFieldPickerMode.dateAndTime,
+                          autovalidateMode: AutovalidateMode.always,
+                          validator: (e) => (e?.day ?? 0) == 1
+                              ? 'Please not the first day'
+                              : null,
+                          onDateSelected: (DateTime value) {
+                            print(value);
+                          },
                         ),
                       ),
-                    )
-                  ]),
+                    ]),
               ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                    height: 300,
-                    width: MediaQuery.of(context).size.width,
-                    child: FlutterMap(
-                      options: MapOptions(
-                        center: LatLng(50.105092, 14.389680),
-                        zoom: 15,
-                      ),
-                      nonRotatedChildren: [
-                        AttributionWidget.defaultWidget(
-                          source: 'OpenStreetMap contributors',
-                          onSourceTapped: null,
-                        ),
-                      ],
-                      children: [
-                        TileLayer(
-                          urlTemplate:
-                              'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                          userAgentPackageName: 'com.example.app',
-                        ),
-                      ],
-                    ))
+                  height: 400,
+                  width: MediaQuery.of(context).size.width,
+                  child: GoogleMap(),
+                )
               ],
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 0.0),
-              child:
-                GridView.count(
-                  primary: false,
-                  padding: const EdgeInsets.all(20),
-                  crossAxisSpacing: 10,
-                  shrinkWrap: true,
-                  mainAxisSpacing: 10,
-                  crossAxisCount: 2,
-                  childAspectRatio: 2,
-                  children: List.generate(15, (index) {
-                    return Container(
-                      height: 10.0,
-                      width: 15.0,
-                      decoration: BoxDecoration(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 0.0),
+              child: GridView.count(
+                primary: false,
+                padding: const EdgeInsets.all(20),
+                crossAxisSpacing: 10,
+                shrinkWrap: true,
+                mainAxisSpacing: 10,
+                crossAxisCount: 2,
+                childAspectRatio: 2,
+                children: List.generate(15, (index) {
+                  return Container(
+                    height: 10.0,
+                    width: 15.0,
+                    decoration: BoxDecoration(
                         color: Colors.white38,
                         borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: Colors.green)
-                    ),
-                        child: Center(
+                        border: Border.all(color: Colors.green)),
+                    child: Center(
                       child: ElevatedButton(
                         style: ButtonStyle(
-                          foregroundColor: MaterialStateProperty.all<Color>(Colors.green),
-                          textStyle: MaterialStateProperty.all<TextStyle>(const TextStyle(color: Colors.white)),
+                          foregroundColor:
+                              MaterialStateProperty.all<Color>(Colors.green),
+                          textStyle: MaterialStateProperty.all<TextStyle>(
+                              const TextStyle(color: Colors.white)),
                         ),
                         onPressed: () => showDialog(
                             context: context,
@@ -224,7 +199,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         TextFormField(
                                           decoration: const InputDecoration(
                                             labelText: 'Message',
-                                            icon: Icon(Icons.message ),
+                                            icon: Icon(Icons.message),
                                           ),
                                         ),
                                       ],
@@ -241,19 +216,18 @@ class _MyHomePageState extends State<MyHomePage> {
                               );
                             }),
                         child: Text(
-                        'Order',
-                    style: Theme.of(context).textTheme.headline5,
-                    ),
-                          ),
+                          'Order',
+                          style: Theme.of(context).textTheme.headline5,
                         ),
-                      );
-                  }),
-                ),
+                      ),
+                    ),
+                  );
+                }),
+              ),
             )
           ],
         ),
       ),
-      )
-    );
+    ) /*)*/;
   }
 }
