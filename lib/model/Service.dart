@@ -9,7 +9,7 @@ class Service {
 }
 
 class ServiceList {
-    List<Service> services = {
+    List<Service> services = [
         Service("Sweeping", "", false),
         Service("Mopping", "", false),
         Service("Vacuuming", "", false),
@@ -22,8 +22,7 @@ class ServiceList {
         Service("Deep Cleaning", "Deep cleaning of all upholstery", false),
         Service("Window Cleaning", "Cleaning of all windows", false),
         Service("Pet Cleaning", "Special cleaning of pets", false),
-
-    }
+    ];
 }
 
 // new Service("Sweeping", "", true), new Service("Mopping", "", true), new Service("Vacuuming", "", true), new Service("Polishing", "", false), new Service("Scrubbing", "", false), new Service("Vent cleaning", "", false), new Service("Gardening", "", false), new Service("Light Fixtures", "Dust cleaning on hight light fixtures", true), new Service("Furniture", "Dust cleaning on furniture", true), new Service("Deep Cleaning", "Deep cleaning of all upholstery", false), new Service("Window Cleaning", "Cleaning of all windows", true), new Service("Pet Cleaning", "Special cleaning of pets", false)
