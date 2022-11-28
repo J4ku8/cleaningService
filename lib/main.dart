@@ -4,6 +4,7 @@ import 'package:cleaning/model/Cleaner.dart';
 import 'package:cleaning/model/LtdLng.dart';
 import 'package:cleaning/model/Review.dart';
 import 'package:cleaning/model/User.dart';
+import 'package:cleaning/model/Service.dart';
 import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -37,9 +38,19 @@ List<Cleaner> services = [
         "25.11.2022",
         3.5)
   ], [
-    'poolishing',
-    'houseKeeping'
-  ]),
+    Service("Sweeping", true),
+    Service("Mopping", true),
+    Service("Vacuuming", true),
+    Service("Polishing", false),
+    Service("Scrubbing", false),
+    Service("Vent cleaning", false),
+    Service("Gardening", false),
+    Service("Light Fixtures", true),
+    Service("Furniture", true),
+    Service("Deep Cleaning", false),
+    Service("Window Cleaning", false),
+    Service("Pet Cleaning", false),
+    ]),
   new Cleaner(
       "Clean all inclusive",
       new Address("Na Příkopech", "Praha", "12345", "CZ", 9),
@@ -67,9 +78,18 @@ List<Cleaner> services = [
         "25.11.2022",
         3.5)
   ], [
-    'poolishing',
-    'houseKeeping',
-    'gardening'
+    Service("Sweeping", true),
+    Service("Mopping", true),
+    Service("Vacuuming", true),
+    Service("Polishing", true),
+    Service("Scrubbing", true),
+    Service("Vent cleaning", true),
+    Service("Gardening", true),
+    Service("Light Fixtures", true),
+    Service("Furniture", true),
+    Service("Deep Cleaning", true),
+    Service("Window Cleaning", true),
+    Service("Pet Cleaning", true),
   ]),
   new Cleaner(
       "Poolish it!",
@@ -98,9 +118,18 @@ List<Cleaner> services = [
         "25.11.2022",
         3.0)
   ], [
-    'poolishin',
-    'houseKeeping',
-    'gardening'
+    Service("Sweeping", true),
+    Service("Mopping", true),
+    Service("Vacuuming", true),
+    Service("Polishing", false),
+    Service("Scrubbing", false),
+    Service("Vent cleaning", false),
+    Service("Gardening", false),
+    Service("Light Fixtures", true),
+    Service("Furniture", true),
+    Service("Deep Cleaning", false),
+    Service("Window Cleaning", false),
+    Service("Pet Cleaning", false),
   ]),
   new Cleaner("Clean all", new Address("Tahkulova", "Praha", "12345", "CZ", 9),
       new LtdLng(20.0, 10.0), '&dollar;&dollar;&dollar;', 5.0, [
@@ -125,8 +154,18 @@ List<Cleaner> services = [
         "25.11.2022",
         3.5)
   ], [
-    'poolishing',
-    'houseKeeping'
+    Service("Sweeping", true),
+    Service("Mopping", true),
+    Service("Vacuuming", true),
+    Service("Polishing", false),
+    Service("Scrubbing", false),
+    Service("Vent cleaning", false),
+    Service("Gardening", false),
+    Service("Light Fixtures", true),
+    Service("Furniture", true),
+    Service("Deep Cleaning", false),
+    Service("Window Cleaning", false),
+    Service("Pet Cleaning", false),
   ]),
   new Cleaner(
       "Clean all inclusive",
@@ -155,9 +194,18 @@ List<Cleaner> services = [
         "25.11.2022",
         3.5)
   ], [
-    'poolishing',
-    'houseKeeping',
-    'gardening'
+    Service("Sweeping", true),
+    Service("Mopping", true),
+    Service("Vacuuming", true),
+    Service("Polishing", false),
+    Service("Scrubbing", false),
+    Service("Vent cleaning", false),
+    Service("Gardening", false),
+    Service("Light Fixtures", true),
+    Service("Furniture", true),
+    Service("Deep Cleaning", false),
+    Service("Window Cleaning", false),
+    Service("Pet Cleaning", false),
   ]),
   new Cleaner(
       "Poolish it!",
@@ -186,9 +234,18 @@ List<Cleaner> services = [
         "25.11.2022",
         3.0)
   ], [
-    'poolishin',
-    'houseKeeping',
-    'gardening'
+    Service("Sweeping", true),
+    Service("Mopping", true),
+    Service("Vacuuming", true),
+    Service("Polishing", false),
+    Service("Scrubbing", false),
+    Service("Vent cleaning", false),
+    Service("Gardening", false),
+    Service("Light Fixtures", true),
+    Service("Furniture", true),
+    Service("Deep Cleaning", false),
+    Service("Window Cleaning", false),
+    Service("Pet Cleaning", false),
   ]),
   new Cleaner("Clean all", new Address("Tahkulova", "Praha", "12345", "CZ", 9),
       new LtdLng(20.0, 10.0), '&dollar;&dollar;&dollar;', 5.0, [
@@ -213,8 +270,18 @@ List<Cleaner> services = [
         "25.11.2022",
         3.5)
   ], [
-    'poolishing',
-    'houseKeeping'
+    Service("Sweeping", true),
+    Service("Mopping", true),
+    Service("Vacuuming", true),
+    Service("Polishing", false),
+    Service("Scrubbing", false),
+    Service("Vent cleaning", false),
+    Service("Gardening", false),
+    Service("Light Fixtures", true),
+    Service("Furniture", true),
+    Service("Deep Cleaning", false),
+    Service("Window Cleaning", false),
+    Service("Pet Cleaning", false),
   ]),
   new Cleaner(
       "Clean all inclusive",
@@ -243,9 +310,18 @@ List<Cleaner> services = [
         "25.11.2022",
         3.5)
   ], [
-    'poolishing',
-    'houseKeeping',
-    'gardening'
+    Service("Sweeping", true),
+    Service("Mopping", true),
+    Service("Vacuuming", true),
+    Service("Polishing", false),
+    Service("Scrubbing", false),
+    Service("Vent cleaning", false),
+    Service("Gardening", false),
+    Service("Light Fixtures", true),
+    Service("Furniture", true),
+    Service("Deep Cleaning", false),
+    Service("Window Cleaning", false),
+    Service("Pet Cleaning", false),
   ]),
   new Cleaner(
       "Poolish it!",
@@ -274,9 +350,18 @@ List<Cleaner> services = [
         "25.11.2022",
         3.0)
   ], [
-    'poolishin',
-    'houseKeeping',
-    'gardening'
+    Service("Sweeping", true),
+    Service("Mopping", true),
+    Service("Vacuuming", true),
+    Service("Polishing", false),
+    Service("Scrubbing", false),
+    Service("Vent cleaning", false),
+    Service("Gardening", false),
+    Service("Light Fixtures", true),
+    Service("Furniture", true),
+    Service("Deep Cleaning", false),
+    Service("Window Cleaning", false),
+    Service("Pet Cleaning", false),
   ]),
 ];
 

@@ -1,6 +1,7 @@
 import 'package:cleaning/model/Address.dart';
 import 'package:cleaning/model/LtdLng.dart';
 import 'package:cleaning/model/Review.dart';
+import 'package:cleaning/model/Service.dart';
 
 class Cleaner {
 
@@ -12,7 +13,7 @@ class Cleaner {
   double ranking;
   List<String> _availability;
   List<Review> _reviews;
-  List<String> availableServices;
+  List<Service> availableServices;
 
 
   Cleaner(this.name, this.address, this.coords, this.prizeCategory,
@@ -28,5 +29,21 @@ class Cleaner {
 
   set reviews(List<Review> value) {
     _reviews = value;
+  }
+
+  int getServiceCount() {
+    int i = 0; 
+    for ( Service s in availableServices) {
+      s.state ? i++ : i ;
+    }
+    return i;
+  }
+
+  List<Service> getAvailableServices() {
+    final ret = <Service>[];
+    for ( Service s in availableServices) {
+      s.state ? ret.insert(0,new Service(s.name, false)) : false ;
+    }
+    return ret;
   }
 }
