@@ -26,6 +26,8 @@ List<Cleaner> services = [
 
 ];
 
+List<Service> availableServicesMock = [new Service("Sweeping", true), new Service("Mopping", true), new Service("Vacuuming", true), new Service("Polishing", false), new Service("Scrubbing", false), new Service("Vent cleaning", false), new Service("Gardening", false), new Service("Light Fixtures", true), new Service("Furniture", true), new Service("Deep Cleaning", false), new Service("Window Cleaning", true), new Service("Pet Cleaning", false)];
+
 Cleaner picked = Null as Cleaner;
 
 class MyApp extends StatelessWidget {
@@ -205,7 +207,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisSpacing: 10,
                   crossAxisCount: 2,
                   childAspectRatio: 2,
-                  children: List.generate(15, (index) {
+                  children: List.generate(15, (index) { ////////////////////////////////////
                     return Container(
                       height: 10.0,
                       width: 15.0,
@@ -240,15 +242,29 @@ class _MyHomePageState extends State<MyHomePage> {
                                         TextFormField(
                                           decoration: const InputDecoration(
                                             labelText: 'Area',
-                                            icon: Icon(Icons.crop_square),
+                                            icon: Icon(Icons.crop_16_9),
                                           ),
                                         ),
                                         Text(
                                           'Choose services', style: TextStyle(color: Colors.black45
                                           )
                                         ),
-                                        /*CheckBoxListTile(
-                                          
+                                        //List<Service> availableServicesMock = [new Service("Sweeping", true), new Service("Mopping", true), new Service("Vacuuming", true), new Service("Polishing", false), new Service("Scrubbing", false), new Service("Vent cleaning", false), new Service("Gardening", false), new Service("Light Fixtures", true), new Service("Furniture", true), new Service("Deep Cleaning", false), new Service("Window Cleaning", true), new Service("Pet Cleaning", false)];
+                                        CheckboxListTile (
+                                          title: new Text( "availableServices[index].name",
+                                          style: TextStyle( color: Colors.black45)),
+                                          value: false,
+                                          onChanged: (bool? val) {
+                                            //availableServices[index].state = val;
+                                          }
+                                        ),
+                                        /*CheckboxListTile (
+                                          title: new Text( availableServices[index].name,
+                                          style: TextStyle( color: Colors.black45)),
+                                          value: availableServices[index].state,
+                                          onChanged: (bool val) {
+                                            availableServices[index].state = val;
+                                          }
                                         ),*/
                                       ],
                                     ),
