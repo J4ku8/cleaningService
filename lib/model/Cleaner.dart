@@ -1,25 +1,26 @@
 import 'package:cleaning/model/Address.dart';
-import 'package:cleaning/model/Coords.dart';
+import 'package:cleaning/model/LtdLng.dart';
 import 'package:cleaning/model/Review.dart';
 
 class Cleaner {
 
   String name;
   Address address;
-  Coords coords;
+  LtdLng coords;
 
   String prizeCategory;
   double ranking;
-  List<DateTime> _availability;
+  List<String> _availability;
   List<Review> _reviews;
+  List<String> availableServices;
 
 
   Cleaner(this.name, this.address, this.coords, this.prizeCategory,
-      this.ranking, this._availability, this._reviews);
+      this.ranking, this._availability, this._reviews, this.availableServices);
 
-  List<DateTime> get availability => _availability;
+  List<String> get availability => _availability;
 
-  set availability(List<DateTime> value) {
+  set availability(List<String> value) {
     _availability = value;
   }
 

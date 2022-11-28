@@ -1,3 +1,8 @@
+import 'package:cleaning/model/Address.dart';
+import 'package:cleaning/model/Cleaner.dart';
+import 'package:cleaning/model/LtdLng.dart';
+import 'package:cleaning/model/Review.dart';
+import 'package:cleaning/model/User.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
@@ -6,6 +11,21 @@ import 'package:date_field/date_field.dart';
 void main() {
   runApp(const MyApp());
 }
+
+List<Cleaner> services = [
+  new Cleaner("Clean all", new Address("Tahkulova", "Praha", "12345", "CZ", 9), new LtdLng(20.0, 10.0), '&dollar;&dollar;&dollar;', 5.0, ["08-00-00, 17-00-00", "08-00-00, 17-00-00", "08-00-00, 17-00-00", "08-00-00, 17-00-00", "08-00-00, 17-00-00", "08-00-00, 17-00-00", "", ""], [new Review("Clean all", new User(0, new LtdLng(0000.00, 000.1111), new Address("Downing Street", "London", "123", "GB", 10), "_password", "Jan", "Petželka"), "25.11.2022", 3.5)], ['poolishing', 'houseKeeping']),
+  new Cleaner("Clean all inclusive", new Address("Na Příkopech", "Praha", "12345", "CZ", 9), new LtdLng(20.0, 10.0), '&dollar;&dollar;', 4.5, ["08-00-00, 17-00-00", "08-00-00, 17-00-00", "", "08-00-00, 17-00-00", "08-00-00, 17-00-00", "08-00-00, 17-00-00", "", ""], [new Review("Clean not all", new User(1, new LtdLng(0001.00, 000.1111), new Address("Hradčanská", "Praha", "123", "CZ", 10), "_password", "Petr", "Adam"), "25.11.2022", 3.5)], ['poolishing', 'houseKeeping', 'gardening']),
+  new Cleaner("Poolish it!", new Address("Na Příkopech", "Praha", "12345", "CZ", 8), new LtdLng(20.0, 12.0), '&dollar;', 4.7, ["08-00-00, 17-00-00", "", "", "08-00-00, 17-00-00", "08-00-00, 17-00-00", "08-00-00, 17-00-00", "", ""], [new Review("Poolish it!", new User(2, new LtdLng(0021.00, 000.1111), new Address("Vysočanská", "Praha", "123", "CZ", 221), "_password", "Adam", "Petr"), "25.11.2022", 3.0)], ['poolishin', 'houseKeeping', 'gardening']),
+  new Cleaner("Clean all", new Address("Tahkulova", "Praha", "12345", "CZ", 9), new LtdLng(20.0, 10.0), '&dollar;&dollar;&dollar;', 5.0, ["08-00-00, 17-00-00", "08-00-00, 17-00-00", "08-00-00, 17-00-00", "08-00-00, 17-00-00", "08-00-00, 17-00-00", "08-00-00, 17-00-00", "", ""], [new Review("Clean all", new User(0, new LtdLng(0000.00, 000.1111), new Address("Downing Street", "London", "123", "GB", 10), "_password", "Jan", "Petželka"), "25.11.2022", 3.5)], ['poolishing', 'houseKeeping']),
+  new Cleaner("Clean all inclusive", new Address("Na Příkopech", "Praha", "12345", "CZ", 9), new LtdLng(20.0, 10.0), '&dollar;&dollar;', 4.5, ["08-00-00, 17-00-00", "08-00-00, 17-00-00", "", "08-00-00, 17-00-00", "08-00-00, 17-00-00", "08-00-00, 17-00-00", "", ""], [new Review("Clean not all", new User(1, new LtdLng(0001.00, 000.1111), new Address("Hradčanská", "Praha", "123", "CZ", 10), "_password", "Petr", "Adam"), "25.11.2022", 3.5)], ['poolishing', 'houseKeeping', 'gardening']),
+  new Cleaner("Poolish it!", new Address("Na Příkopech", "Praha", "12345", "CZ", 8), new LtdLng(20.0, 12.0), '&dollar;', 4.7, ["08-00-00, 17-00-00", "", "", "08-00-00, 17-00-00", "08-00-00, 17-00-00", "08-00-00, 17-00-00", "", ""], [new Review("Poolish it!", new User(2, new LtdLng(0021.00, 000.1111), new Address("Vysočanská", "Praha", "123", "CZ", 221), "_password", "Adam", "Petr"), "25.11.2022", 3.0)], ['poolishin', 'houseKeeping', 'gardening']),
+  new Cleaner("Clean all", new Address("Tahkulova", "Praha", "12345", "CZ", 9), new LtdLng(20.0, 10.0), '&dollar;&dollar;&dollar;', 5.0, ["08-00-00, 17-00-00", "08-00-00, 17-00-00", "08-00-00, 17-00-00", "08-00-00, 17-00-00", "08-00-00, 17-00-00", "08-00-00, 17-00-00", "", ""], [new Review("Clean all", new User(0, new LtdLng(0000.00, 000.1111), new Address("Downing Street", "London", "123", "GB", 10), "_password", "Jan", "Petželka"), "25.11.2022", 3.5)], ['poolishing', 'houseKeeping']),
+  new Cleaner("Clean all inclusive", new Address("Na Příkopech", "Praha", "12345", "CZ", 9), new LtdLng(20.0, 10.0), '&dollar;&dollar;', 4.5, ["08-00-00, 17-00-00", "08-00-00, 17-00-00", "", "08-00-00, 17-00-00", "08-00-00, 17-00-00", "08-00-00, 17-00-00", "", ""], [new Review("Clean not all", new User(1, new LtdLng(0001.00, 000.1111), new Address("Hradčanská", "Praha", "123", "CZ", 10), "_password", "Petr", "Adam"), "25.11.2022", 3.5)], ['poolishing', 'houseKeeping', 'gardening']),
+  new Cleaner("Poolish it!", new Address("Na Příkopech", "Praha", "12345", "CZ", 8), new LtdLng(20.0, 12.0), '&dollar;', 4.7, ["08-00-00, 17-00-00", "", "", "08-00-00, 17-00-00", "08-00-00, 17-00-00", "08-00-00, 17-00-00", "", ""], [new Review("Poolish it!", new User(2, new LtdLng(0021.00, 000.1111), new Address("Vysočanská", "Praha", "123", "CZ", 221), "_password", "Adam", "Petr"), "25.11.2022", 3.0)], ['poolishin', 'houseKeeping', 'gardening']),
+
+];
+
+Cleaner picked = Null as Cleaner;
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

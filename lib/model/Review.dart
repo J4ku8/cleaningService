@@ -2,16 +2,16 @@ import 'package:cleaning/model/Cleaner.dart';
 import 'package:cleaning/model/User.dart';
 
 class Review{
-  Cleaner _target;
+  String _target;
   User _author;
-  DateTime _date;
+  String _date;
   double ranking;
 
+
   Review(this._target, this._author, this._date, this.ranking);
+  String get target => _target;
 
-  Cleaner get target => _target;
-
-  set target(Cleaner value) {
+  set target(String value) {
     _target = value;
   }
 
@@ -21,9 +21,9 @@ class Review{
     _author = value;
   }
 
-  DateTime get date => _date;
+  String get date => _date;
 
-  set date(DateTime value) {
+  set date(String value) {
     _date = value;
   }
 }

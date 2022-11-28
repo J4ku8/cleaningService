@@ -1,11 +1,11 @@
 import 'package:cleaning/model/Address.dart';
-import 'package:cleaning/model/Coords.dart';
+import 'package:cleaning/model/LtdLng.dart';
 
 class User {
 
   int _uniqId;
 
-  Coords coords;
+  LtdLng coords;
 
   Address _address;
   String _password;
