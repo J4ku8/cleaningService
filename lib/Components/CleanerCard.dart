@@ -35,22 +35,37 @@ class CleanerCard extends StatelessWidget {
                         children: <Widget>[
                           TextFormField(
                             decoration: const InputDecoration(
-                              labelText: 'Name',
-                              icon: Icon(Icons.account_box),
+                              labelText: 'Address',
+                              icon: Icon(Icons.place),
                             ),
                           ),
                           TextFormField(
                             decoration: const InputDecoration(
-                              labelText: 'Email',
-                              icon: Icon(Icons.email),
+                              labelText: 'Area',
+                              icon: Icon(Icons.crop_16_9),
                             ),
                           ),
-                          TextFormField(
-                            decoration: const InputDecoration(
-                              labelText: 'Message',
-                              icon: Icon(Icons.message),
-                            ),
+                          Text(
+                            'Choose services', style: TextStyle(color: Colors.black45
+                            )
                           ),
+                          //List<Service> availableServicesMock = [new Service("Sweeping", true), new Service("Mopping", true), new Service("Vacuuming", true), new Service("Polishing", false), new Service("Scrubbing", false), new Service("Vent cleaning", false), new Service("Gardening", false), new Service("Light Fixtures", true), new Service("Furniture", true), new Service("Deep Cleaning", false), new Service("Window Cleaning", true), new Service("Pet Cleaning", false)];
+                          CheckboxListTile (
+                            title: new Text( "availableServices[index].name",
+                            style: TextStyle( color: Colors.black45)),
+                            value: false,
+                            onChanged: (bool? val) {
+                              item.availableServices[0].state = val;
+                            }
+                          ),
+                          /*CheckboxListTile (
+                            title: new Text( availableServices[index].name,
+                            style: TextStyle( color: Colors.black45)),
+                            value: availableServices[index].state,
+                            onChanged: (bool val) {
+                              availableServices[index].state = val;
+                            }
+                          ),*/
                         ],
                       ),
                     ),
