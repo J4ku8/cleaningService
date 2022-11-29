@@ -413,6 +413,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             height: 50,
                             width: 250,
                             child: TextField(
+                              style: TextStyle(color: Colors.black45),
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(),
                                 hintText: 'Enter a search term',
