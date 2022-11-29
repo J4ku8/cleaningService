@@ -11,14 +11,14 @@ class User {
   String _password;
 
 
-  String name;
-  String surname;
-  String email;
-  String telephone;
+  String _name;
+  String _surname;
+  String _email;
+  String _telephone;
 
 
-  User(this._uniqId, this.coords, this._address, this._password, this.name,
-      this.surname, this.email, this.telephone);
+  User(this._uniqId, this.coords, this._address, this._password, this._name,
+      this._surname, [this._email = "", this._telephone = ""]);
 
   int get uniqId => _uniqId;
 
@@ -38,23 +38,23 @@ class User {
     _address = value;
   }
 
-  String get name => name;
+  String get name => _name;
   set name(String value) {
-    name = value;
+    _name = value;
   }
 
-  String get surname => surname;
+  String get surname => _surname;
   set surname(String value) {
-    surname = value;
+    _surname = value;
   }
 
-  String get email => email;
+  String get email => _email;
   set email(String value) {
-    email = value;
+    _email = value;
   }
 
-  String get telephone => telephone;
+  String get telephone => _telephone;
   set telephone(String value) {
-    telephone = value;
+    _telephone = value;
   }
 }
