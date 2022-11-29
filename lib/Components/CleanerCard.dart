@@ -11,8 +11,13 @@ class CleanerCard extends StatefulWidget {
 }
 
 class CleanerCardState extends State<CleanerCard> {
+  bool? selectAll = true;
+  bool? object = false;
+
   @override
   Widget build(BuildContext context) {
+    Cleaner picked = Cleaner.clone(widget.item);
+    // picked.setServicesToFalse();
     return Container(
       height: 10.0,
       width: 15.0,
@@ -27,182 +32,228 @@ class CleanerCardState extends State<CleanerCard> {
             textStyle: MaterialStateProperty.all<TextStyle>(
                 const TextStyle(color: Colors.white)),
           ),
-          onPressed: () => showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  scrollable: true,
-                  title: const Text('Create Order',
-                      style: TextStyle(color: Colors.black45)),
-                  content: StatefulBuilder(
-                      builder: (BuildContext context, StateSetter setState) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Form(
-                        child: Column(
-                          children: <Widget>[
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                labelText: 'Address',
-                                icon: Icon(Icons.place),
-                              ),
-                            ),
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                labelText: 'Area',
-                                icon: Icon(Icons.crop_16_9),
-                              ),
-                            ),
-                            const Text('Choose services',
-                                style: TextStyle(color: Colors.black45)),
-                            CheckboxListTile(
-                              title: Text(
-                                widget.item.availableServices[0].name,
-                                style: const TextStyle(color: Colors.black45),
-                              ),
-                              autofocus: false,
-                              value: widget.item.availableServices[0].state,
-                              onChanged: (bool? newValue) {
-                                print(newValue);
-                                setState(() => widget.item.availableServices[0]
-                                    .state = newValue);
-                              },
-                              controlAffinity: ListTileControlAffinity
-                                  .leading, //  <-- leading Checkbox
-                            )
-
-                            /*
-                          CheckboxListTile (
-                            title: new Text( "availableServices[index].name",
-                            style: TextStyle( color: Colors.black45)),
-                            value: false,
-                            onChanged: (bool? val) {
-                              item.availableServices[0].state = val == null ? false : val;
-                            }
-                          ),*/
-
-                            /*CheckboxListTile (
-                            title: new Text( item.getAvailableServices()[0].name,
-                            style: TextStyle( color: Colors.black45)),
-                            value: item.getAvailableServices()[0].state,
-                            onChanged: (bool? val) {
-                              item.getAvailableServices()[0].state = val == null ? false : val;
-                            }
-                          ),*/
-                            /*
-                          for ( Service s in item.getAvailableServices() ) {
-                            CheckboxListTile (
-                            title: new Text( s.name,
-                            style: TextStyle( color: Colors.black45)),
-                            value: s.state,
-                            onChanged: (bool? val) {
-                              s.state = val == null ? false : val;
-                            }
-                          ),
-                          }
-                          */
-
-                            /*new ListView.builder(
-                            itemCount: item.availableServices.length,
-                            itemBuilder: (BuildContext context, int index) {
-                            return new Card(
-                              child: new Container(
-                                padding: new EdgeInsets.all(10.0),
-                                child: Column(
-                                  children: <Widget>[
-                                    new CheckboxListTile(
-                                        activeColor: Colors.pink[300],
-                                        dense: true,
-                                        //font change
-                                        title: new Text(
-                                          item.availableServices[index].name,
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w600,
-                                              letterSpacing: 0.5),
+          onPressed: () {
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    scrollable: true,
+                    title: const Text('Create Order',
+                        style: TextStyle(color: Colors.black45)),
+                    content: StatefulBuilder(
+                        builder: (BuildContext context, StateSetter setState) {
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Form(
+                              child: Column(
+                                children: <Widget>[
+                                  CheckboxListTile(
+                                    title: const Text(
+                                      "Clean your object",
+                                      style: TextStyle(color: Colors.black45),
+                                    ),
+                                    autofocus: false,
+                                    value: object,
+                                    onChanged: (bool? newValue) {
+                                      setState(() => object = newValue);
+                                    },
+                                    controlAffinity: ListTileControlAffinity
+                                        .leading, //  <-- leading Checkbox
+                                  ),
+                                  if (object == false)
+                                    TextFormField(
+                                      decoration: const InputDecoration(
+                                        labelText: 'Address',
+                                        icon: Icon(Icons.place),
+                                      ),
+                                    ),
+                                  TextFormField(
+                                    decoration: const InputDecoration(
+                                      labelText: 'Area',
+                                      icon: Icon(Icons.crop_16_9),
+                                    ),
+                                  ),
+                                  TextFormField(
+                                    decoration: const InputDecoration(
+                                      labelText: 'Notes',
+                                      icon: Icon(Icons.edit_outlined),
+                                    ),
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsets.only(top: 20),
+                                    child: Text('Choose services',
+                                        style: TextStyle(
+                                            color: Colors.black45)),
+                                  ),
+                                  SingleChildScrollView(
+                                    scrollDirection: Axis.vertical,
+                                    child: Column(
+                                      children: [
+                                        SizedBox(
+                                          width: 200,
+                                          height: 400,
+                                          child: Column(
+                                            children: [
+                                              SizedBox(
+                                                width: 200,
+                                                height: 50,
+                                                child: CheckboxListTile(
+                                                  title: const Text(
+                                                    "Select all",
+                                                    style: TextStyle(
+                                                        color: Colors.black45),
+                                                  ),
+                                                  autofocus: false,
+                                                  value: selectAll,
+                                                  onChanged: (bool? newValue) {
+                                                    setState(
+                                                            () =>
+                                                        selectAll = newValue);
+                                                    if (newValue == true) {
+                                                      picked
+                                                          .setServicesToTrue();
+                                                    } else {
+                                                      picked
+                                                          .setServicesToFalse();
+                                                    }
+                                                  },
+                                                  controlAffinity:
+                                                  ListTileControlAffinity
+                                                      .leading, //  <-- leading Checkbox
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 200,
+                                                height: 230,
+                                                child: ListView.builder(
+                                                    itemCount: widget.item
+                                                        .availableServices
+                                                        .length,
+                                                    itemBuilder:
+                                                        (BuildContext context,
+                                                        int index) {
+                                                      if (widget
+                                                          .item
+                                                          .availableServices[
+                                                      index]
+                                                          .state ==
+                                                          true) {
+                                                        return CheckboxListTile(
+                                                          title: Text(
+                                                            picked
+                                                                .availableServices[
+                                                            index]
+                                                                .name,
+                                                            style: const TextStyle(
+                                                                color:
+                                                                Colors.black45),
+                                                          ),
+                                                          autofocus: false,
+                                                          value: picked
+                                                              .availableServices[
+                                                          index]
+                                                              .state,
+                                                          onChanged:
+                                                              (bool? newValue) {
+                                                            setState(() =>
+                                                            picked
+                                                                .availableServices[
+                                                            index]
+                                                                .state =
+                                                                newValue);
+                                                          },
+                                                          controlAffinity:
+                                                          ListTileControlAffinity
+                                                              .leading, //  <-- leading Checkbox
+                                                        );
+                                                      } else {
+                                                        return Container(
+                                                            color: Colors
+                                                                .white);
+                                                      }
+                                                    }),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                        value: item.availableServices[index].state,
-                                        onChanged: (bool? val) {
-                                         item.availableServices[index].state = val == null ? false : val;
-                                        })
-                                  ],
-                                ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
                               ),
-                            );
-                          }
-                          ),*/
-                            /*
-                          CheckboxListTile (
-                            title: new Text( item.getAvailableServices()[0].name,
-                            style: TextStyle( color: Colors.black45)),
-                            value: item.getAvailableServices()[0].state,
-                            onChanged: (bool? val) {
-                              if ( val == true)
-                                item.getAvailableServices()[0].state = false;
-                              else
-                                item.getAvailableServices()[0].state = true;
-                            }
-                          ),
-                          CheckboxListTile (
-                            title: new Text( item.getAvailableServices()[1].name,
-                            style: TextStyle( color: Colors.black45)),
-                            value: item.getAvailableServices()[1].state,
-                            onChanged: (bool? val) {
-                              item.getAvailableServices()[1].state = val == null ? true : !val;
-                            }
-                          ),
-                          CheckboxListTile (
-                            title: new Text( item.getAvailableServices()[2].name,
-                            style: TextStyle( color: Colors.black45)),
-                            value: item.getAvailableServices()[2].state,
-                            onChanged: (bool? val) {
-                              item.getAvailableServices()[2].state = val == null ? true : !val;
-                            }
-                          ),
-                          CheckboxListTile (
-                            title: new Text( item.getAvailableServices()[3].name,
-                            style: TextStyle( color: Colors.black45)),
-                            value: item.getAvailableServices()[3].state,
-                            onChanged: (bool? val) {
-                              item.getAvailableServices()[3].state = val == null ? true : !val;
-                            }
-                          ),
-                          CheckboxListTile (
-                            title: new Text( item.getAvailableServices()[4].name,
-                            style: TextStyle( color: Colors.black45)),
-                            value: item.getAvailableServices()[4].state,
-                            onChanged: (bool? val) {
-                              item.getAvailableServices()[4].state = val == null ? true : !val;
-                            }
-                          ),
-                          */
-                            /*
-                          CheckboxListTile (
-                            title: new Text( item.getAvailableServices()[5].name,
-                            style: TextStyle( color: Colors.black45)),
-                            value: item.getAvailableServices()[5].state,
-                            onChanged: (bool? val) {
-                              item.getAvailableServices()[5].state = val == null ? true : !val;
-                            }
-                          ),
-                          */
-                          ],
-                        ),
+                            ),
+                          );
+                        }),
+                    actions: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TextButton(
+                              child: const Text("Close"),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              }),
+                          TextButton(
+                              style: TextButton.styleFrom(
+                                  backgroundColor: Colors.green,
+                                  primary: Colors.white),
+                              onPressed: () {
+                                // Navigator.of(context).pop();
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      // Future.delayed(Duration(seconds: 2), () {
+                                      //   text = "Payed!";
+                                      // });
+                                      Future.delayed(Duration(seconds: 3), () {
+                                        showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              Future.delayed(
+                                                Duration(seconds: 3), () {
+                                                int count = 0;
+                                                Navigator.of(context).popUntil((
+                                                    _) => count++ >= 3);
+                                              },
+                                              );
+                                              return const AlertDialog(
+                                                scrollable: true,
+                                                title: Padding(
+                                                  padding: EdgeInsets.all(
+                                                      10.0),
+                                                  child: Text("Paid!",
+                                                      style: TextStyle(
+                                                          color: Colors
+                                                              .black45)),
+                                                ),
+                                              );
+                                            }
+                                        );
+                                      });
+                                      return const AlertDialog(
+                                        scrollable: true,
+                                        title: Padding(
+                                          padding: EdgeInsets.all(10.0),
+                                          child: Text("Proccessing payment",
+                                              style: TextStyle(
+                                                  color: Colors.black45)),
+                                        ),
+                                      );
+                                    });
+                              },
+                              child: const Text("Order and pay"))
+                        ],
                       ),
-                    );
-                  }),
-                  actions: [
-                    OutlinedButton(
-                        child: const Text("Close"),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        })
-                  ],
-                );
-              }),
+                    ],
+                  );
+                });
+          },
           child: Text(
             widget.item.name,
-            style: Theme.of(context).textTheme.headline5,
+            style: Theme
+                .of(context)
+                .textTheme
+                .headline5,
           ),
         ),
       ),

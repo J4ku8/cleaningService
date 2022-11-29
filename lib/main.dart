@@ -365,8 +365,6 @@ List<Cleaner> services = [
   ]),
 ];
 
-Cleaner picked = Null as Cleaner;
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -378,7 +376,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
         textTheme: Theme.of(context).textTheme.apply(
-              bodyColor: Colors.white,
+              bodyColor: Colors.black87,
             ),
       ),
       home: const MyHomePage(),

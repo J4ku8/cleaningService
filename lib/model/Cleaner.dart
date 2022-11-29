@@ -15,6 +15,22 @@ class Cleaner {
   List<Review> _reviews;
   List<Service> availableServices;
 
+  factory Cleaner.clone(Cleaner source) {
+    return Cleaner(source.name, source.address, source.coords, source.prizeCategory, source.ranking, source._availability, source._reviews, source.availableServices);
+  }
+
+  void setServicesToFalse() {
+    availableServices.forEach((element) {
+      element.state = false;
+    });
+  }
+
+  void setServicesToTrue() {
+    availableServices.forEach((element) {
+      element.state = true;
+    });
+  }
+
 
   Cleaner(this.name, this.address, this.coords, this.prizeCategory,
       this.ranking, this._availability, this._reviews, this.availableServices);
@@ -32,7 +48,7 @@ class Cleaner {
   }
 
   int getServiceCount() {
-    int i = 0; 
+    int i = 0;
     for ( Service s in availableServices) {
       if (s.state != null)
         if ( s.state == true)
