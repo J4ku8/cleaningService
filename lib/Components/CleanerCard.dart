@@ -13,20 +13,19 @@ class CleanerCard extends StatefulWidget {
 }
 
 class CleanerCardState extends State<CleanerCard> {
-  bool? selectAll = true;
+  bool? selectAll = false;
   bool? object = false;
-
 
   @override
   Widget build(BuildContext context) {
     List<Service> listOfAvailableServices = [];
     Cleaner picked = Cleaner.clone(widget.item);
     picked.availableServices.forEach((element) {
-      if(element.state == true){
+      if (element.state == true) {
         listOfAvailableServices.add(element);
       }
     });
-    // picked.setServicesToFalse();
+    picked.setServicesToFalse();
     return Container(
       decoration: BoxDecoration(
           color: Colors.white38,
@@ -100,7 +99,8 @@ class CleanerCardState extends State<CleanerCard> {
                           scrollDirection: Axis.vertical,
                           itemBuilder: (context, index) {
                             return SizedBox(
-                              child: Text("${widget.item.availability[index]}\n",
+                              child: Text(
+                                  "${widget.item.availability[index]}\n",
                                   style: const TextStyle(
                                       fontSize: 13,
                                       height:
@@ -128,7 +128,8 @@ class CleanerCardState extends State<CleanerCard> {
                           scrollDirection: Axis.vertical,
                           itemBuilder: (context, index) {
                             return SizedBox(
-                              child: Text("${listOfAvailableServices[index].name}\n",
+                              child: Text(
+                                  "${listOfAvailableServices[index].name}\n",
                                   style: const TextStyle(
                                       fontSize: 13,
                                       height:
@@ -171,153 +172,148 @@ class CleanerCardState extends State<CleanerCard> {
                                   scrollable: true,
                                   title: const Text('Create Order',
                                       style: TextStyle(color: Colors.black45)),
-                                  content: StatefulBuilder(
-                                      builder: (BuildContext context, StateSetter setState) {
-                                        return Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Form(
-                                            child: Column(
-                                              children: <Widget>[
-                                                CheckboxListTile(
-                                                  title: const Text(
-                                                    "Clean your object",
-                                                    style: TextStyle(color: Colors.black45),
-                                                  ),
-                                                  autofocus: false,
-                                                  value: object,
-                                                  onChanged: (bool? newValue) {
-                                                    setState(() => object = newValue);
-                                                  },
-                                                  controlAffinity: ListTileControlAffinity
+                                  content: StatefulBuilder(builder:
+                                      (BuildContext context,
+                                          StateSetter setState) {
+                                    return Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Form(
+                                        child: Column(
+                                          children: <Widget>[
+                                            CheckboxListTile(
+                                              title: const Text(
+                                                "Clean your object",
+                                                style: TextStyle(
+                                                    color: Colors.black45),
+                                              ),
+                                              autofocus: false,
+                                              value: object,
+                                              onChanged: (bool? newValue) {
+                                                setState(
+                                                    () => object = newValue);
+                                              },
+                                              controlAffinity:
+                                                  ListTileControlAffinity
                                                       .leading, //  <-- leading Checkbox
+                                            ),
+                                            if (object == false)
+                                              TextFormField(
+                                                decoration:
+                                                    const InputDecoration(
+                                                  labelText: 'Address',
+                                                  icon: Icon(Icons.place),
                                                 ),
-                                                if (object == false)
-                                                  TextFormField(
-                                                    decoration: const InputDecoration(
-                                                      labelText: 'Address',
-                                                      icon: Icon(Icons.place),
-                                                    ),
-                                                  ),
-                                                TextFormField(
-                                                  decoration: const InputDecoration(
-                                                    labelText: 'Area',
-                                                    icon: Icon(Icons.crop_16_9),
-                                                  ),
-                                                ),
-                                                TextFormField(
-                                                  decoration: const InputDecoration(
-                                                    labelText: 'Notes',
-                                                    icon: Icon(Icons.edit_outlined),
-                                                  ),
-                                                ),
-                                                const Padding(
-                                                  padding: EdgeInsets.only(top: 20),
-                                                  child: Text('Choose services',
-                                                      style: TextStyle(
-                                                          color: Colors.black45)),
-                                                ),
-                                                SingleChildScrollView(
-                                                  scrollDirection: Axis.vertical,
-                                                  child: Column(
-                                                    children: [
-                                                      SizedBox(
-                                                        width: 200,
-                                                        height: 400,
-                                                        child: Column(
-                                                          children: [
-                                                            SizedBox(
-                                                              width: 200,
-                                                              height: 50,
-                                                              child: CheckboxListTile(
-                                                                title: const Text(
-                                                                  "Select all",
-                                                                  style: TextStyle(
-                                                                      color: Colors.black45),
-                                                                ),
-                                                                autofocus: false,
-                                                                value: selectAll,
-                                                                onChanged: (bool? newValue) {
-                                                                  setState(
-                                                                          () =>
-                                                                      selectAll = newValue);
-                                                                  if (newValue == true) {
-                                                                    picked
-                                                                        .setServicesToTrue();
-                                                                  } else {
-                                                                    picked
-                                                                        .setServicesToFalse();
-                                                                  }
-                                                                },
-                                                                controlAffinity:
+                                              ),
+                                            TextFormField(
+                                              decoration: const InputDecoration(
+                                                labelText: 'Area',
+                                                icon: Icon(Icons.crop_16_9),
+                                              ),
+                                            ),
+                                            TextFormField(
+                                              decoration: const InputDecoration(
+                                                labelText: 'Notes',
+                                                icon: Icon(Icons.edit_outlined),
+                                              ),
+                                            ),
+                                            const Padding(
+                                              padding: EdgeInsets.only(top: 20),
+                                              child: Text('Choose services',
+                                                  style: TextStyle(
+                                                      color: Colors.black45)),
+                                            ),
+                                            SingleChildScrollView(
+                                              scrollDirection: Axis.vertical,
+                                              child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    width: 200,
+                                                    height: 400,
+                                                    child: Column(
+                                                      children: [
+                                                        SizedBox(
+                                                          width: 200,
+                                                          height: 50,
+                                                          child:
+                                                              CheckboxListTile(
+                                                            title: const Text(
+                                                              "Select all",
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .black45),
+                                                            ),
+                                                            autofocus: false,
+                                                            value: selectAll,
+                                                            onChanged: (bool?
+                                                                newValue) {
+                                                              setState(() =>
+                                                                  selectAll =
+                                                                      newValue);
+                                                              if (newValue ==
+                                                                  true) {
+                                                                picked
+                                                                    .setServicesToTrue();
+                                                              } else {
+                                                                picked
+                                                                    .setServicesToFalse();
+                                                              }
+                                                            },
+                                                            controlAffinity:
                                                                 ListTileControlAffinity
                                                                     .leading, //  <-- leading Checkbox
-                                                              ),
-                                                            ),
-                                                            SizedBox(
-                                                              width: 200,
-                                                              height: 230,
-                                                              child: ListView.builder(
-                                                                  itemCount: widget.item
-                                                                      .availableServices
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          width: 200,
+                                                          height: 230,
+                                                          child:
+                                                              ListView.builder(
+                                                                  itemCount: listOfAvailableServices
                                                                       .length,
                                                                   itemBuilder:
-                                                                      (BuildContext context,
-                                                                      int index) {
-                                                                    if (widget
-                                                                        .item
-                                                                        .availableServices[
-                                                                    index]
-                                                                        .state ==
-                                                                        true) {
+                                                                      (BuildContext
+                                                                              context,
+                                                                          int index) {
                                                                       return CheckboxListTile(
-                                                                        title: Text(
-                                                                          picked
-                                                                              .availableServices[
-                                                                          index]
+                                                                        title:
+                                                                            Text(
+                                                                              listOfAvailableServices[index]
                                                                               .name,
-                                                                          style: const TextStyle(
-                                                                              color:
-                                                                              Colors.black45),
+                                                                          style:
+                                                                              const TextStyle(color: Colors.black45),
                                                                         ),
-                                                                        autofocus: false,
+                                                                        autofocus:
+                                                                            false,
                                                                         value: picked
-                                                                            .availableServices[
-                                                                        index]
+                                                                            .availableServices[index]
                                                                             .state,
                                                                         onChanged:
-                                                                            (bool? newValue) {
-                                                                          setState(() =>
-                                                                          picked
-                                                                              .availableServices[
-                                                                          index]
-                                                                              .state =
-                                                                              newValue);
+                                                                            (bool?
+                                                                                newValue) {
+                                                                          setState(() => picked
+                                                                              .availableServices[index]
+                                                                              .state = newValue);
                                                                         },
                                                                         controlAffinity:
-                                                                        ListTileControlAffinity
-                                                                            .leading, //  <-- leading Checkbox
+                                                                            ListTileControlAffinity.leading, //  <-- leading Checkbox
                                                                       );
-                                                                    } else {
-                                                                      return Container(
-                                                                          color: Colors
-                                                                              .white);
-                                                                    }
                                                                   }),
-                                                            ),
-                                                          ],
                                                         ),
-                                                      ),
-                                                    ],
+                                                      ],
+                                                    ),
                                                   ),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
-                                          ),
-                                        );
-                                      }),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  }),
                                   actions: [
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         TextButton(
                                             child: const Text("Close"),
@@ -332,42 +328,56 @@ class CleanerCardState extends State<CleanerCard> {
                                               // Navigator.of(context).pop();
                                               showDialog(
                                                   context: context,
-                                                  builder: (BuildContext context) {
+                                                  builder:
+                                                      (BuildContext context) {
                                                     // Future.delayed(Duration(seconds: 2), () {
                                                     //   text = "Payed!";
                                                     // });
-                                                    Future.delayed(Duration(seconds: 3), () {
+                                                    Future.delayed(
+                                                        Duration(seconds: 3),
+                                                        () {
                                                       showDialog(
                                                           context: context,
-                                                          builder: (BuildContext context) {
+                                                          builder: (BuildContext
+                                                              context) {
                                                             Future.delayed(
-                                                              Duration(seconds: 3), () {
-                                                              int count = 0;
-                                                              Navigator.of(context).popUntil((
-                                                                  _) => count++ >= 3);
-                                                            },
+                                                              Duration(
+                                                                  seconds: 3),
+                                                              () {
+                                                                int count = 0;
+                                                                Navigator.of(
+                                                                        context)
+                                                                    .popUntil((_) =>
+                                                                        count++ >=
+                                                                        3);
+                                                              },
                                                             );
                                                             return const AlertDialog(
                                                               scrollable: true,
                                                               title: Padding(
-                                                                padding: EdgeInsets.all(
-                                                                    10.0),
-                                                                child: Text("Paid!",
+                                                                padding:
+                                                                    EdgeInsets
+                                                                        .all(
+                                                                            10.0),
+                                                                child: Text(
+                                                                    "Paid!",
                                                                     style: TextStyle(
                                                                         color: Colors
                                                                             .black45)),
                                                               ),
                                                             );
-                                                          }
-                                                      );
+                                                          });
                                                     });
                                                     return const AlertDialog(
                                                       scrollable: true,
                                                       title: Padding(
-                                                        padding: EdgeInsets.all(10.0),
-                                                        child: Text("Proccessing payment",
+                                                        padding: EdgeInsets.all(
+                                                            10.0),
+                                                        child: Text(
+                                                            "Proccessing payment",
                                                             style: TextStyle(
-                                                                color: Colors.black45)),
+                                                                color: Colors
+                                                                    .black45)),
                                                       ),
                                                     );
                                                   });
