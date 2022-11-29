@@ -628,33 +628,16 @@ class _MyHomePageState extends State<MyHomePage> {
                         ))
                   ],
                 ),
-                /*Row(mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(cleaningOptions.length, (index) {
-                    return CheckboxListTile(
-                      value: filterCheckboxState[index],
-                      onChanged: (value) => {
-                        filterCheckboxState[index] = value!,
-                        if (value)
-                          activeFilters
-                              .add(cleaningOptions[index].toLowerCase())
-                        else
-                          activeFilters
-                              .remove(cleaningOptions[index].toLowerCase())
-                      },
-                      title: Text(cleaningOptions[index]),
-                    );
-                  }),
-                )*/
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 8.0, horizontal: 0.0),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                   child: GridView.count(
                     primary: false,
                     crossAxisCount: 4,
-                    padding: const EdgeInsets.all(20),
+                    childAspectRatio: 10,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
-                    childAspectRatio: 3,
+                    shrinkWrap: true,
                     children: List.generate(cleaningOptions.length, (index) {
                       return CheckboxListTile(
                         value: filterCheckboxState[index],
