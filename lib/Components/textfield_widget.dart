@@ -18,6 +18,8 @@ class TextFieldWidget extends StatefulWidget {
   _TextFieldWidgetState createState() => _TextFieldWidgetState();
 }
 
+
+
 class _TextFieldWidgetState extends State<TextFieldWidget> {
   late final TextEditingController controller;
 
@@ -26,7 +28,12 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
     super.initState();
 
     controller = TextEditingController(text: widget.text);
+    // controller.addListener(_printLatestValue);
   }
+
+//   void _printLatestValue() {
+//     print('${controller.text}');
+//   }
 
   @override
   void dispose() {
@@ -53,6 +60,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
               ),
             ),
             maxLines: widget.maxLines,
+            onChanged: (String val) => widget.onChanged(controller.text)
           ),
         ],
       );

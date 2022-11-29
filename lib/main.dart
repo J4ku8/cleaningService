@@ -281,6 +281,8 @@ List<Cleaner> services = [
   ]),
 ];
 
+User user = new User( 1, new LtdLng(0001.00, 000.1111), new Address("Hradčanská", "Praha", "123", "CZ", 10), "_password", "Petr", "Adam", "petradam@example.com", "+420 737 542 111");
+
 Cleaner picked = Null as Cleaner;
 
 class MyApp extends StatelessWidget {
@@ -486,7 +488,7 @@ class EditProfilePage extends StatefulWidget {
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
-  User user = new User( 1, new LtdLng(0001.00, 000.1111), new Address("Hradčanská", "Praha", "123", "CZ", 10), "_password", "Petr", "Adam", "petradam@example.com", "+420 737 542 111");
+  
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -566,14 +568,18 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 TextFieldWidget(
                   label: 'First Name',
                   text: user.name,
-                  onChanged: (name) {},
+                  onChanged: (name) {
+                    user.name = name;
+                  },
                 )),
                 SizedBox(width: 50),
                 new Flexible( child:
                 TextFieldWidget(
                   label: 'Last Name',
                   text: user.surname,
-                  onChanged: (surname) {},
+                  onChanged: (surname) {
+                    user.surname = surname;
+                  },
                 )),
               ]
             ),
@@ -585,14 +591,18 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 TextFieldWidget(
                   label: 'Email',
                   text: user.email,
-                  onChanged: (email) {},
+                  onChanged: (email) {
+                    user.email = email;
+                  },
                 )),
                 SizedBox(width: 50),
                 new Flexible( child:
                 TextFieldWidget(
                   label: 'Telephone',
                   text: user.telephone,
-                  onChanged: (telephone) {},
+                  onChanged: (telephone) {
+                    user.telephone = telephone;
+                  },
                 )),
               ]
             ),
@@ -604,14 +614,18 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 TextFieldWidget(
                   label: 'Street',
                   text: user.address.street,
-                  onChanged: (streett) {},
+                  onChanged: (street) {
+                    user.address.street = street;
+                  },
                 )),
                 SizedBox(width: 50),
                 new Flexible( child:
                 TextFieldWidget(
                   label: 'Streen number',
                   text: user.address.number.toString(),
-                  onChanged: (number) {},
+                  onChanged: (number) {
+                    user.address.number = int.parse(number);
+                  },
                 )),
               ]
             ),
@@ -623,14 +637,18 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 TextFieldWidget(
                   label: 'City',
                   text: user.address.city,
-                  onChanged: (city) {},
+                  onChanged: (city) {
+                    user.address.city = city;
+                  },
                 )),
                 SizedBox(width: 50),
                 new Flexible( child:
                 TextFieldWidget(
                   label: 'PSC',
                   text: user.address.psc,
-                  onChanged: (psc) {},
+                  onChanged: (psc) {
+                    user.address.psc = psc;
+                  },
                 )),
               ]
             ),
