@@ -297,6 +297,7 @@ class MyApp extends StatelessWidget {
             ),
       ),
       home: const EditProfilePage(), // TODO change back to MyHomePage
+      //home: const MyHomePage(), // TODO change back to MyHomePage
     );
   }
 }
@@ -370,7 +371,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 size: 45,
               ),
               onPressed: () {
-                // do something
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const EditProfilePage()),
+                );
               },
             )
           ],
@@ -543,7 +547,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 size: 45,
               ),
               onPressed: () {
-                // do something
+                Navigator.pop(context);
               },
             )
           ],
@@ -560,7 +564,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     width: MediaQuery.of(context).size.width * 0.5,
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
+                        children: <Widget>[ Text("User settings", style: TextStyle(color: Colors.black45, fontSize: 25) ),
                           
                         ]),
                   ),
