@@ -67,7 +67,8 @@ List<Cleaner> services = [
     Service("Deep Cleaning", false),
     Service("Window Cleaning", false),
     Service("Pet Cleaning", false),
-  ]),
+  ], ["Sweeping","Mopping","Vacuuming",
+      "Light Fixtures","Furniture"]),
   new Cleaner(
       "Clean all inclusive",
       new Address("Na Příkopech", "Praha", "12345", "CZ", 9),
@@ -106,7 +107,9 @@ List<Cleaner> services = [
     Service("Deep Cleaning", true),
     Service("Window Cleaning", true),
     Service("Pet Cleaning", true),
-  ]),
+  ], ["Sweeping","Mopping","Vacuuming","Polishing","Scrubbing","Vent cleaning",
+      "Gardening","Light Fixtures","Furniture","Deep Cleaning","Window Cleaning",
+      "Pet Cleaning",]),
   new Cleaner(
       "Poolish it!",
       new Address("Na Příkopech", "Praha", "12345", "CZ", 8),
@@ -145,7 +148,8 @@ List<Cleaner> services = [
     Service("Deep Cleaning", false),
     Service("Window Cleaning", false),
     Service("Pet Cleaning", false),
-  ]),
+  ], ["Sweeping","Mopping","Vacuuming",
+      "Light Fixtures","Furniture"]),
   new Cleaner("Clean all", new Address("Tahkulova", "Praha", "12345", "CZ", 9),
       new LtdLng(20.0, 10.0), r'$$$', 5.0, [
     "Mon: 08-00-00 - 17-00-00",
@@ -180,7 +184,8 @@ List<Cleaner> services = [
     Service("Deep Cleaning", false),
     Service("Window Cleaning", false),
     Service("Pet Cleaning", false),
-  ]),
+  ], ["Sweeping","Mopping","Vacuuming",
+      "Light Fixtures","Furniture"]),
   new Cleaner(
       "Clean all inclusive",
       new Address("Na Příkopech", "Praha", "12345", "CZ", 9),
@@ -219,7 +224,8 @@ List<Cleaner> services = [
     Service("Deep Cleaning", false),
     Service("Window Cleaning", false),
     Service("Pet Cleaning", false),
-  ]),
+  ], ["Sweeping","Mopping","Vacuuming",
+      "Light Fixtures","Furniture"]),
   new Cleaner("Clean all", new Address("Tahkulova", "Praha", "12345", "CZ", 9),
       new LtdLng(20.0, 10.0), r'$$$', 5.0, [
     "Mon: 08-00-00 - 17-00-00",
@@ -254,7 +260,8 @@ List<Cleaner> services = [
     Service("Deep Cleaning", false),
     Service("Window Cleaning", false),
     Service("Pet Cleaning", false),
-  ]),
+  ], ["Sweeping","Mopping","Vacuuming",
+      "Light Fixtures","Furniture"]),
   new Cleaner(
       "Clean all inclusive",
       new Address("Na Příkopech", "Praha", "12345", "CZ", 9),
@@ -293,7 +300,8 @@ List<Cleaner> services = [
     Service("Deep Cleaning", false),
     Service("Window Cleaning", false),
     Service("Pet Cleaning", false),
-  ]),
+  ], ["Sweeping","Mopping","Vacuuming",
+      "Light Fixtures","Furniture"]),
   new Cleaner(
       "Poolish it!",
       new Address("Na Příkopech", "Praha", "12345", "CZ", 8),
@@ -332,7 +340,8 @@ List<Cleaner> services = [
     Service("Deep Cleaning", false),
     Service("Window Cleaning", false),
     Service("Pet Cleaning", false),
-  ]),
+  ], ["Sweeping","Mopping","Vacuuming",
+      "Light Fixtures","Furniture"]),
   new Cleaner("Clean all", new Address("Tahkulova", "Praha", "12345", "CZ", 9),
       new LtdLng(20.0, 10.0), r'$$$', 5.0, [
     "Mon: 08-00-00 - 17-00-00",
@@ -367,7 +376,8 @@ List<Cleaner> services = [
     Service("Deep Cleaning", false),
     Service("Window Cleaning", false),
     Service("Pet Cleaning", false),
-  ]),
+  ], ["Sweeping","Mopping","Vacuuming",
+      "Light Fixtures","Furniture"]),
   new Cleaner(
       "Clean all inclusive",
       new Address("Na Příkopech", "Praha", "12345", "CZ", 9),
@@ -406,7 +416,8 @@ List<Cleaner> services = [
     Service("Deep Cleaning", false),
     Service("Window Cleaning", false),
     Service("Pet Cleaning", false),
-  ]),
+  ], ["Sweeping","Mopping","Vacuuming",
+      "Light Fixtures","Furniture"]),
   new Cleaner(
       "Poolish it!",
       new Address("Na Příkopech", "Praha", "12345", "CZ", 8),
@@ -446,7 +457,8 @@ List<Cleaner> services = [
     Service("Deep Cleaning", false),
     Service("Window Cleaning", false),
     Service("Pet Cleaning", false),
-  ]),
+  ], ["Sweeping","Mopping","Vacuuming",
+      "Light Fixtures","Furniture"]),
 ];
 
 class MyApp extends StatelessWidget {
@@ -483,7 +495,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Cleaner> filteredCompanies() {
     if (activeFilters.isEmpty) return services;
     return services
-        .where((company) => Set.of(company.getAvailableServicesAsString())
+        .where((company) => Set.of(company.stringServices)
             .containsAll(activeFilters))
         .toList();
   }

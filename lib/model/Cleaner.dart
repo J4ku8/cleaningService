@@ -4,6 +4,7 @@ import 'package:cleaning/model/Review.dart';
 import 'package:cleaning/model/Service.dart';
 
 class Cleaner {
+
   String name;
   Address address;
   LtdLng coords;
@@ -13,33 +14,27 @@ class Cleaner {
   List<String> _availability;
   List<Review> _reviews;
   List<Service> availableServices;
+  List<String> stringServices;
 
   factory Cleaner.clone(Cleaner source) {
-    return Cleaner(
-        source.name,
-        source.address,
-        source.coords,
-        source.prizeCategory,
-        source.ranking,
-        source._availability,
-        source._reviews,
-        source.availableServices);
+    return Cleaner(source.name, source.address, source.coords, source.prizeCategory, source.ranking, source._availability, source._reviews, source.availableServices, source.stringServices);
   }
 
   void setServicesToFalse() {
-    for (var element in availableServices) {
+    availableServices.forEach((element) {
       element.state = false;
-    }
+    });
   }
 
   void setServicesToTrue() {
-    for (var element in availableServices) {
+    availableServices.forEach((element) {
       element.state = true;
-    }
+    });
   }
 
+
   Cleaner(this.name, this.address, this.coords, this.prizeCategory,
-      this.ranking, this._availability, this._reviews, this.availableServices);
+      this.ranking, this._availability, this._reviews, this.availableServices, [this.stringServices = const []]);
 
   List<String> get availability => _availability;
 
@@ -55,17 +50,20 @@ class Cleaner {
 
   int getServiceCount() {
     int i = 0;
-    for (Service s in availableServices) {
-      if (s.state != null) if (s.state == true) i++;
+    for ( Service s in availableServices) {
+      if (s.state != null)
+        if ( s.state == true)
+          i++;
     }
     return i;
   }
 
   List<Service> getAvailableServices() {
     final ret = <Service>[];
-    for (Service s in availableServices) {
-      if (s.state != null) if (s.state == true)
-        ret.insert(0, new Service(s.name, false));
+    for ( Service s in availableServices) {
+      if (s.state != null)
+        if ( s.state == true)
+          ret.insert(0,new Service(s.name, false));
     }
     return ret;
   }
@@ -77,4 +75,5 @@ class Cleaner {
     }
     return ret;
   }
+  
 }
