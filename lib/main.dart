@@ -14,6 +14,21 @@ void main() {
   runApp(const MyApp());
 }
 
+List<String> cleaningOptions = [
+  'Sweeping',
+  'Mopping',
+  'Vacuuming',
+  'Polishing',
+  'Scrubbing',
+  'Vent cleaning',
+  'Gardening',
+  'Light Fixtures',
+  'Furniture',
+  'Deep Cleaning',
+  'Window Cleaning',
+  'Pet Cleaning',
+];
+
 List<Cleaner> services = [
   new Cleaner("Clean all", new Address("Tahkulova", "Praha", "12345", "CZ", 9),
       new LtdLng(20.0, 10.0), r'$$$', 5.0, [
@@ -49,7 +64,7 @@ List<Cleaner> services = [
     Service("Deep Cleaning", false),
     Service("Window Cleaning", false),
     Service("Pet Cleaning", false),
-    ]),
+  ]),
   new Cleaner(
       "Clean all inclusive",
       new Address("Na Příkopech", "Praha", "12345", "CZ", 9),
@@ -130,13 +145,13 @@ List<Cleaner> services = [
   ]),
   new Cleaner("Clean all", new Address("Tahkulova", "Praha", "12345", "CZ", 9),
       new LtdLng(20.0, 10.0), r'$$$', 5.0, [
-        "Mon: 08-00-00 - 17-00-00",
-        "Tue: 08-00-00 - 17-00-00",
-        "Wen: 08-00-00 - 17-00-00",
-        "Thr: 08-00-00 - 17-00-00",
-        "Fri: 08-00-00 - 17-00-00",
-        "Sat: -",
-        "Sun: -"
+    "Mon: 08-00-00 - 17-00-00",
+    "Tue: 08-00-00 - 17-00-00",
+    "Wen: 08-00-00 - 17-00-00",
+    "Thr: 08-00-00 - 17-00-00",
+    "Fri: 08-00-00 - 17-00-00",
+    "Sat: -",
+    "Sun: -"
   ], [
     new Review(
         "Clean all",
@@ -204,39 +219,39 @@ List<Cleaner> services = [
   ]),
   new Cleaner("Clean all", new Address("Tahkulova", "Praha", "12345", "CZ", 9),
       new LtdLng(20.0, 10.0), r'$$$', 5.0, [
-        "Mon: 08-00-00 - 17-00-00",
-        "Tue: 08-00-00 - 17-00-00",
-        "Wen: 08-00-00 - 17-00-00",
-        "Thr: 08-00-00 - 17-00-00",
-        "Fri: 08-00-00 - 17-00-00",
-        "Sat: 08-00-00 - 17-00-00",
-        "Sun: -"
-      ], [
-        new Review(
-            "Clean all",
-            new User(
-                0,
-                new LtdLng(0000.00, 000.1111),
-                new Address("Downing Street", "London", "123", "GB", 10),
-                "_password",
-                "Jan",
-                "Petželka"),
-            "25.11.2022",
-            3.5)
-      ], [
-        Service("Sweeping", true),
-        Service("Mopping", true),
-        Service("Vacuuming", true),
-        Service("Polishing", false),
-        Service("Scrubbing", false),
-        Service("Vent cleaning", false),
-        Service("Gardening", false),
-        Service("Light Fixtures", true),
-        Service("Furniture", true),
-        Service("Deep Cleaning", false),
-        Service("Window Cleaning", false),
-        Service("Pet Cleaning", false),
-      ]),
+    "Mon: 08-00-00 - 17-00-00",
+    "Tue: 08-00-00 - 17-00-00",
+    "Wen: 08-00-00 - 17-00-00",
+    "Thr: 08-00-00 - 17-00-00",
+    "Fri: 08-00-00 - 17-00-00",
+    "Sat: 08-00-00 - 17-00-00",
+    "Sun: -"
+  ], [
+    new Review(
+        "Clean all",
+        new User(
+            0,
+            new LtdLng(0000.00, 000.1111),
+            new Address("Downing Street", "London", "123", "GB", 10),
+            "_password",
+            "Jan",
+            "Petželka"),
+        "25.11.2022",
+        3.5)
+  ], [
+    Service("Sweeping", true),
+    Service("Mopping", true),
+    Service("Vacuuming", true),
+    Service("Polishing", false),
+    Service("Scrubbing", false),
+    Service("Vent cleaning", false),
+    Service("Gardening", false),
+    Service("Light Fixtures", true),
+    Service("Furniture", true),
+    Service("Deep Cleaning", false),
+    Service("Window Cleaning", false),
+    Service("Pet Cleaning", false),
+  ]),
   new Cleaner(
       "Clean all inclusive",
       new Address("Na Příkopech", "Praha", "12345", "CZ", 9),
@@ -317,39 +332,39 @@ List<Cleaner> services = [
   ]),
   new Cleaner("Clean all", new Address("Tahkulova", "Praha", "12345", "CZ", 9),
       new LtdLng(20.0, 10.0), r'$$$', 5.0, [
-        "Mon: 08-00-00 - 17-00-00",
-        "Tue: 08-00-00 - 17-00-00",
-        "Wen: 08-00-00 - 17-00-00",
-        "Thr: 08-00-00 - 17-00-00",
-        "Fri: 08-00-00 - 17-00-00",
-        "Sat: -",
-        "Sun: -"
-      ], [
-        new Review(
-            "Clean all",
-            new User(
-                0,
-                new LtdLng(0000.00, 000.1111),
-                new Address("Downing Street", "London", "123", "GB", 10),
-                "_password",
-                "Jan",
-                "Petželka"),
-            "25.11.2022",
-            3.5)
-      ], [
-        Service("Sweeping", true),
-        Service("Mopping", true),
-        Service("Vacuuming", true),
-        Service("Polishing", false),
-        Service("Scrubbing", false),
-        Service("Vent cleaning", false),
-        Service("Gardening", false),
-        Service("Light Fixtures", true),
-        Service("Furniture", true),
-        Service("Deep Cleaning", false),
-        Service("Window Cleaning", false),
-        Service("Pet Cleaning", false),
-      ]),
+    "Mon: 08-00-00 - 17-00-00",
+    "Tue: 08-00-00 - 17-00-00",
+    "Wen: 08-00-00 - 17-00-00",
+    "Thr: 08-00-00 - 17-00-00",
+    "Fri: 08-00-00 - 17-00-00",
+    "Sat: -",
+    "Sun: -"
+  ], [
+    new Review(
+        "Clean all",
+        new User(
+            0,
+            new LtdLng(0000.00, 000.1111),
+            new Address("Downing Street", "London", "123", "GB", 10),
+            "_password",
+            "Jan",
+            "Petželka"),
+        "25.11.2022",
+        3.5)
+  ], [
+    Service("Sweeping", true),
+    Service("Mopping", true),
+    Service("Vacuuming", true),
+    Service("Polishing", false),
+    Service("Scrubbing", false),
+    Service("Vent cleaning", false),
+    Service("Gardening", false),
+    Service("Light Fixtures", true),
+    Service("Furniture", true),
+    Service("Deep Cleaning", false),
+    Service("Window Cleaning", false),
+    Service("Pet Cleaning", false),
+  ]),
   new Cleaner(
       "Clean all inclusive",
       new Address("Na Příkopech", "Praha", "12345", "CZ", 9),
@@ -458,6 +473,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  List<String> activeFilters = [];
+  List<bool> filterCheckboxState =
+      List.generate(cleaningOptions.length, (e) => false);
+
+  List<Cleaner> filteredCompanies() {
+    if (activeFilters.isEmpty) return services;
+    var filter = List.generate(
+        activeFilters.length, (index) => Service(activeFilters[index], true));
+    return services
+        .where(
+            (company) => Set.of(company.availableServices).containsAll(filter))
+        .toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -599,6 +628,50 @@ class _MyHomePageState extends State<MyHomePage> {
                         ))
                   ],
                 ),
+                /*Row(mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(cleaningOptions.length, (index) {
+                    return CheckboxListTile(
+                      value: filterCheckboxState[index],
+                      onChanged: (value) => {
+                        filterCheckboxState[index] = value!,
+                        if (value)
+                          activeFilters
+                              .add(cleaningOptions[index].toLowerCase())
+                        else
+                          activeFilters
+                              .remove(cleaningOptions[index].toLowerCase())
+                      },
+                      title: Text(cleaningOptions[index]),
+                    );
+                  }),
+                )*/
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 8.0, horizontal: 0.0),
+                  child: GridView.count(
+                    primary: false,
+                    crossAxisCount: 4,
+                    padding: const EdgeInsets.all(20),
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    childAspectRatio: 3,
+                    children: List.generate(cleaningOptions.length, (index) {
+                      return CheckboxListTile(
+                        value: filterCheckboxState[index],
+                        onChanged: (value) => {
+                          filterCheckboxState[index] = value!,
+                          if (value)
+                            activeFilters
+                                .add(cleaningOptions[index].toLowerCase())
+                          else
+                            activeFilters
+                                .remove(cleaningOptions[index].toLowerCase())
+                        },
+                        title: Text(cleaningOptions[index]),
+                      );
+                    }),
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       vertical: 8.0, horizontal: 0.0),
@@ -610,9 +683,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisSpacing: 10,
                     crossAxisCount: 2,
                     childAspectRatio: 3,
-                    children: List.generate(services.length, (index) {
-                      return CleanerCard(item: services[index]);
-                    }),
+                    children: filteredCompanies()
+                        .map((company) => CleanerCard(item: company))
+                        .toList(),
                   ),
                 ),
               ],
