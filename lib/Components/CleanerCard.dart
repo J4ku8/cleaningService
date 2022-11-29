@@ -132,12 +132,8 @@ class CleanerCardState extends State<CleanerCard> {
                                                     itemBuilder:
                                                         (BuildContext context,
                                                         int index) {
-                                                      if (widget
-                                                          .item
-                                                          .availableServices[
-                                                      index]
-                                                          .state ==
-                                                          true) {
+                                                      // if (widget.item.availableServices[index].state == true) {
+                                                      if (true) {
                                                         return CheckboxListTile(
                                                           title: Text(
                                                             picked
