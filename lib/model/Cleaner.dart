@@ -4,7 +4,6 @@ import 'package:cleaning/model/Review.dart';
 import 'package:cleaning/model/Service.dart';
 
 class Cleaner {
-
   String name;
   Address address;
   LtdLng coords;
@@ -16,21 +15,28 @@ class Cleaner {
   List<Service> availableServices;
 
   factory Cleaner.clone(Cleaner source) {
-    return Cleaner(source.name, source.address, source.coords, source.prizeCategory, source.ranking, source._availability, source._reviews, source.availableServices);
+    return Cleaner(
+        source.name,
+        source.address,
+        source.coords,
+        source.prizeCategory,
+        source.ranking,
+        source._availability,
+        source._reviews,
+        source.availableServices);
   }
 
   void setServicesToFalse() {
-    availableServices.forEach((element) {
+    for (var element in availableServices) {
       element.state = false;
-    });
+    }
   }
 
   void setServicesToTrue() {
-    availableServices.forEach((element) {
+    for (var element in availableServices) {
       element.state = true;
-    });
+    }
   }
-
 
   Cleaner(this.name, this.address, this.coords, this.prizeCategory,
       this.ranking, this._availability, this._reviews, this.availableServices);
@@ -49,20 +55,25 @@ class Cleaner {
 
   int getServiceCount() {
     int i = 0;
-    for ( Service s in availableServices) {
-      if (s.state != null)
-        if ( s.state == true)
-          i++;
+    for (Service s in availableServices) {
+      if (s.state != null) if (s.state == true) i++;
     }
     return i;
   }
 
   List<Service> getAvailableServices() {
     final ret = <Service>[];
-    for ( Service s in availableServices) {
-      if (s.state != null)
-        if ( s.state == true)
-          ret.insert(0,new Service(s.name, false));
+    for (Service s in availableServices) {
+      if (s.state != null) if (s.state == true)
+        ret.insert(0, new Service(s.name, false));
+    }
+    return ret;
+  }
+
+  List<String> getAvailableServicesAsString() {
+    final ret = <String>[];
+    for (var service in availableServices) {
+      if (service.state! == true) ret.add(service.name);
     }
     return ret;
   }

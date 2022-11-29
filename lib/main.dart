@@ -1,3 +1,6 @@
+import 'dart:developer';
+import 'dart:html';
+
 import 'package:cleaning/Components/CleanerCard.dart';
 import 'package:cleaning/model/Address.dart';
 import 'package:cleaning/model/Cleaner.dart';
@@ -479,11 +482,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   List<Cleaner> filteredCompanies() {
     if (activeFilters.isEmpty) return services;
-    var filter = List.generate(
-        activeFilters.length, (index) => Service(activeFilters[index], true));
     return services
-        .where(
-            (company) => Set.of(company.availableServices).containsAll(filter))
+        .where((company) => Set.of(company.getAvailableServicesAsString())
+            .containsAll(activeFilters))
         .toList();
   }
 
@@ -643,12 +644,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         value: filterCheckboxState[index],
                         onChanged: (value) => {
                           filterCheckboxState[index] = value!,
+                          setState(() {}),
                           if (value)
-                            activeFilters
-                                .add(cleaningOptions[index].toLowerCase())
+                            activeFilters.add(cleaningOptions[index])
                           else
-                            activeFilters
-                                .remove(cleaningOptions[index].toLowerCase())
+                            activeFilters.remove(cleaningOptions[index])
                         },
                         title: Text(cleaningOptions[index]),
                       );
