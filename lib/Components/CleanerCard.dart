@@ -206,7 +206,7 @@ class CleanerCardState extends State<CleanerCard> {
                                               ),
                                             TextFormField(
                                               decoration: const InputDecoration(
-                                                labelText: 'Area',
+                                                labelText: 'Area in m^2',
                                                 icon: Icon(Icons.crop_16_9),
                                               ),
                                             ),
