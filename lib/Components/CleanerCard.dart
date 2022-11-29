@@ -20,11 +20,11 @@ class CleanerCardState extends State<CleanerCard> {
   Widget build(BuildContext context) {
     List<Service> listOfAvailableServices = [];
     Cleaner picked = Cleaner.clone(widget.item);
-    picked.availableServices.forEach((element) {
+    for (var element in picked.availableServices) {
       if (element.state == true) {
         listOfAvailableServices.add(element);
       }
-    });
+    }
     picked.setServicesToFalse();
     return Container(
       decoration: BoxDecoration(
