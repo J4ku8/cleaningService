@@ -296,7 +296,7 @@ class MyApp extends StatelessWidget {
               bodyColor: Colors.white,
             ),
       ),
-      home: const MyHomePage(),
+      home: const EditProfilePage(), // TODO change back to MyHomePage
     );
   }
 }
@@ -472,3 +472,107 @@ class _MyHomePageState extends State<MyHomePage> {
         ));
   }
 }
+
+class EditProfilePage extends StatefulWidget {
+  const EditProfilePage({super.key});
+
+  @override
+  State<EditProfilePage> createState() => _EditProfilePageState();
+}
+
+class _EditProfilePageState extends State<EditProfilePage> {
+  User user = new User( 1, new LtdLng(0001.00, 000.1111), new Address("Hradčanská", "Praha", "123", "CZ", 10), "_password", "Petr", "Adam");
+  @override
+  Widget build(BuildContext context) {
+    // This method is rerun every time setState is called, for instance as done
+    // by the _incrementCounter method above.
+    //
+    // The Flutter framework has been optimized to make rerunning build methods
+    // fast, so that you can just rebuild anything that needs updating rather
+    // than having to individually change instances of widgets.
+    return Scaffold(
+        resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          title: const Text('Dáme úklid'),
+          backgroundColor: Colors.green,
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(
+                Icons.power_settings_new_sharp,
+                color: Colors.white,
+                size: 35,
+              ),
+              onPressed: () {
+                // do something
+              },
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.assignment_sharp,
+                color: Colors.white,
+                size: 35,
+              ),
+              onPressed: () {
+                // do something
+              },
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.bookmarks_sharp,
+                color: Colors.white,
+                size: 35,
+              ),
+              onPressed: () {
+                // do something
+              },
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.notifications_sharp,
+                color: Colors.white,
+                size: 35,
+              ),
+              onPressed: () {
+                // do something
+              },
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.account_circle_sharp,
+                color: Colors.white,
+                size: 45,
+              ),
+              onPressed: () {
+                // do something
+              },
+            )
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              //mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 8.0, horizontal: 0.0),
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          
+                        ]),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ));
+  }
+    
+
+
+    
+} 
+    
