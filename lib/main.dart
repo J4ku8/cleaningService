@@ -297,8 +297,8 @@ class MyApp extends StatelessWidget {
               bodyColor: Colors.white,
             ),
       ),
-      home: const EditProfilePage(), // TODO change back to MyHomePage
-      //home: const MyHomePage(), // TODO change back to MyHomePage
+      //home: const EditProfilePage(), // TODO change back to MyHomePage
+      home: const MyHomePage(), // TODO change back to MyHomePage
     );
   }
 }
@@ -486,7 +486,7 @@ class EditProfilePage extends StatefulWidget {
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
-  User user = new User( 1, new LtdLng(0001.00, 000.1111), new Address("Hradčanská", "Praha", "123", "CZ", 10), "_password", "Petr", "Adam", "petradam@seznam.cz", "+420 737 542 111");
+  User user = new User( 1, new LtdLng(0001.00, 000.1111), new Address("Hradčanská", "Praha", "123", "CZ", 10), "_password", "Petr", "Adam", "petradam@example.com", "+420 737 542 111");
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -557,19 +557,120 @@ class _EditProfilePageState extends State<EditProfilePage> {
           padding: EdgeInsets.symmetric(horizontal: 32),
           physics: BouncingScrollPhysics(),
           children: [
-            Text("User settings", style: TextStyle(color: Colors.black45, fontSize: 25)),
-            const SizedBox(height: 24),
-            TextFieldWidget(
-              label: 'First Name',
-              text: user.name,
-              onChanged: (name) {},
+            Center( child:Text("User settings", style: TextStyle(color: Colors.black45, fontSize: 25)),),
+            Row( 
+              mainAxisAlignment: MainAxisAlignment.spaceBetween ,
+              children: [
+                SizedBox(height: 100),
+                new Flexible( child: 
+                TextFieldWidget(
+                  label: 'First Name',
+                  text: user.name,
+                  onChanged: (name) {},
+                )),
+                SizedBox(width: 50),
+                new Flexible( child:
+                TextFieldWidget(
+                  label: 'Last Name',
+                  text: user.surname,
+                  onChanged: (surname) {},
+                )),
+              ]
             ),
-            const SizedBox(height: 24),
-            TextFieldWidget(
-              label: 'Last Name',
-              text: user.surname,
-              onChanged: (surname) {},
+            Row( 
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SizedBox(height: 100),
+                new Flexible( child:
+                TextFieldWidget(
+                  label: 'Email',
+                  text: user.email,
+                  onChanged: (email) {},
+                )),
+                SizedBox(width: 50),
+                new Flexible( child:
+                TextFieldWidget(
+                  label: 'Telephone',
+                  text: user.telephone,
+                  onChanged: (telephone) {},
+                )),
+              ]
             ),
+            Row( 
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SizedBox(height: 100),
+                new Flexible( child:
+                TextFieldWidget(
+                  label: 'Street',
+                  text: user.address.street,
+                  onChanged: (streett) {},
+                )),
+                SizedBox(width: 50),
+                new Flexible( child:
+                TextFieldWidget(
+                  label: 'Streen number',
+                  text: user.address.number.toString(),
+                  onChanged: (number) {},
+                )),
+              ]
+            ),
+            Row( 
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SizedBox(height: 100),
+                new Flexible( child:
+                TextFieldWidget(
+                  label: 'City',
+                  text: user.address.city,
+                  onChanged: (city) {},
+                )),
+                SizedBox(width: 50),
+                new Flexible( child:
+                TextFieldWidget(
+                  label: 'PSC',
+                  text: user.address.psc,
+                  onChanged: (psc) {},
+                )),
+              ]
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SizedBox(height: 120),
+                Padding( 
+                  padding: EdgeInsets.all(16.0),
+                  child: Center(
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.grey),
+                        backgroundColor: MaterialStateProperty.all<Color>(Colors.grey),
+                        textStyle: MaterialStateProperty.all<TextStyle>(
+                            const TextStyle(color: Colors.white)),
+                      ),
+                      child: Text ("Change password", style: const TextStyle(color: Colors.white)),
+                      onPressed: () {}
+                    )
+                  )
+                ),
+                Spacer(),
+                Container( 
+                  child: Center(
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.green),
+                        textStyle: MaterialStateProperty.all<TextStyle>(
+                            const TextStyle(color: Colors.white)),
+                      ),
+                      child: Text ("Save and return to Home", style: const TextStyle(color: Colors.white)),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      }
+                    )
+                  )
+                )
+              ]
+            )
             
           ],
         ),
