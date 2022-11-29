@@ -1,4 +1,5 @@
 import 'package:cleaning/Components/CleanerCard.dart';
+import 'package:cleaning/Components/textfield_widget.dart';
 import 'package:cleaning/model/Address.dart';
 import 'package:cleaning/model/Cleaner.dart';
 import 'package:cleaning/model/LtdLng.dart';
@@ -431,6 +432,11 @@ List<Cleaner> services = [
   ]),
 ];
 
+
+User user = new User( 1, new LtdLng(0001.00, 000.1111), new Address("Hradčanská", "Praha", "123", "CZ", 10), "_password", "Petr", "Adam", "petradam@example.com", "+420 737 542 111");
+
+Cleaner picked = Null as Cleaner;
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -445,7 +451,8 @@ class MyApp extends StatelessWidget {
               bodyColor: Colors.black87,
             ),
       ),
-      home: const MyHomePage(),
+      //home: const EditProfilePage(), // TODO change back to MyHomePage
+      home: const MyHomePage(), // TODO change back to MyHomePage
     );
   }
 }
@@ -519,7 +526,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 size: 45,
               ),
               onPressed: () {
-                // do something
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const EditProfilePage()),
+                );
               },
             )
           ],
@@ -621,3 +631,224 @@ class _MyHomePageState extends State<MyHomePage> {
         ));
   }
 }
+
+class EditProfilePage extends StatefulWidget {
+  const EditProfilePage({super.key});
+
+  @override
+  State<EditProfilePage> createState() => _EditProfilePageState();
+}
+
+class _EditProfilePageState extends State<EditProfilePage> {
+  
+  @override
+  Widget build(BuildContext context) {
+    // This method is rerun every time setState is called, for instance as done
+    // by the _incrementCounter method above.
+    //
+    // The Flutter framework has been optimized to make rerunning build methods
+    // fast, so that you can just rebuild anything that needs updating rather
+    // than having to individually change instances of widgets.
+    return Scaffold(
+        resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          title: const Text('Dáme úklid'),
+          backgroundColor: Colors.green,
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(
+                Icons.power_settings_new_sharp,
+                color: Colors.white,
+                size: 35,
+              ),
+              onPressed: () {
+                // do something
+              },
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.assignment_sharp,
+                color: Colors.white,
+                size: 35,
+              ),
+              onPressed: () {
+                // do something
+              },
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.bookmarks_sharp,
+                color: Colors.white,
+                size: 35,
+              ),
+              onPressed: () {
+                // do something
+              },
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.notifications_sharp,
+                color: Colors.white,
+                size: 35,
+              ),
+              onPressed: () {
+                // do something
+              },
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.account_circle_sharp,
+                color: Colors.white,
+                size: 45,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            )
+          ],
+        ),
+        body: ListView(
+          padding: EdgeInsets.symmetric(horizontal: 32),
+          physics: BouncingScrollPhysics(),
+          children: [
+            Center( child:Text("User settings", style: TextStyle(color: Colors.black45, fontSize: 25)),),
+            Row( 
+              mainAxisAlignment: MainAxisAlignment.spaceBetween ,
+              children: [
+                SizedBox(height: 100),
+                new Flexible( child: 
+                TextFieldWidget(
+                  label: 'First Name',
+                  text: user.name,
+                  onChanged: (name) {
+                    user.name = name;
+                  },
+                )),
+                SizedBox(width: 50),
+                new Flexible( child:
+                TextFieldWidget(
+                  label: 'Last Name',
+                  text: user.surname,
+                  onChanged: (surname) {
+                    user.surname = surname;
+                  },
+                )),
+              ]
+            ),
+            Row( 
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SizedBox(height: 100),
+                new Flexible( child:
+                TextFieldWidget(
+                  label: 'Email',
+                  text: user.email,
+                  onChanged: (email) {
+                    user.email = email;
+                  },
+                )),
+                SizedBox(width: 50),
+                new Flexible( child:
+                TextFieldWidget(
+                  label: 'Telephone',
+                  text: user.telephone,
+                  onChanged: (telephone) {
+                    user.telephone = telephone;
+                  },
+                )),
+              ]
+            ),
+            Row( 
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SizedBox(height: 100),
+                new Flexible( child:
+                TextFieldWidget(
+                  label: 'Street',
+                  text: user.address.street,
+                  onChanged: (street) {
+                    user.address.street = street;
+                  },
+                )),
+                SizedBox(width: 50),
+                new Flexible( child:
+                TextFieldWidget(
+                  label: 'Streen number',
+                  text: user.address.number.toString(),
+                  onChanged: (number) {
+                    user.address.number = int.parse(number);
+                  },
+                )),
+              ]
+            ),
+            Row( 
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SizedBox(height: 100),
+                new Flexible( child:
+                TextFieldWidget(
+                  label: 'City',
+                  text: user.address.city,
+                  onChanged: (city) {
+                    user.address.city = city;
+                  },
+                )),
+                SizedBox(width: 50),
+                new Flexible( child:
+                TextFieldWidget(
+                  label: 'PSC',
+                  text: user.address.psc,
+                  onChanged: (psc) {
+                    user.address.psc = psc;
+                  },
+                )),
+              ]
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SizedBox(height: 120),
+                Padding( 
+                  padding: EdgeInsets.all(16.0),
+                  child: Center(
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.grey),
+                        backgroundColor: MaterialStateProperty.all<Color>(Colors.grey),
+                        textStyle: MaterialStateProperty.all<TextStyle>(
+                            const TextStyle(color: Colors.white)),
+                      ),
+                      child: Text ("Change password", style: const TextStyle(color: Colors.white)),
+                      onPressed: () {}
+                    )
+                  )
+                ),
+                Spacer(),
+                Container( 
+                  child: Center(
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.green),
+                        textStyle: MaterialStateProperty.all<TextStyle>(
+                            const TextStyle(color: Colors.white)),
+                      ),
+                      child: Text ("Save and return to Home", style: const TextStyle(color: Colors.white)),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      }
+                    )
+                  )
+                )
+              ]
+            )
+            
+          ],
+        ),
+      );
+  }
+    
+
+
+    
+} 
+    
