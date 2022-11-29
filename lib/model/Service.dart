@@ -1,6 +1,6 @@
 
 class Service {
-    
+
     String name;
     bool? state;
 

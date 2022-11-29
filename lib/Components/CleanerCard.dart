@@ -1,12 +1,16 @@
 import 'package:cleaning/model/Cleaner.dart';
 import 'package:flutter/material.dart';
-import 'package:cleaning/model/Service.dart';
 
-class CleanerCard extends StatelessWidget {
+class CleanerCard extends StatefulWidget {
   final Cleaner item;
 
-  CleanerCard({required this.item});
+  const CleanerCard({Key? key, required this.item}) : super(key: key);
 
+  @override
+  CleanerCardState createState() => CleanerCardState();
+}
+
+class CleanerCardState extends State<CleanerCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,35 +32,46 @@ class CleanerCard extends StatelessWidget {
               builder: (BuildContext context) {
                 return AlertDialog(
                   scrollable: true,
-                  title: const Text('Create Order', style: TextStyle(color: Colors.black45)),
-                  content: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Form(
-                      child: Column(
-                        children: <Widget>[
-                          
-                          TextFormField(
-                            decoration: const InputDecoration(
-                              labelText: 'Address',
-                              icon: Icon(Icons.place),
+                  title: const Text('Create Order',
+                      style: TextStyle(color: Colors.black45)),
+                  content: StatefulBuilder(
+                      builder: (BuildContext context, StateSetter setState) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Form(
+                        child: Column(
+                          children: <Widget>[
+                            TextFormField(
+                              decoration: const InputDecoration(
+                                labelText: 'Address',
+                                icon: Icon(Icons.place),
+                              ),
                             ),
-                          ),
-                          TextFormField(
-                            decoration: const InputDecoration(
-                              labelText: 'Area',
-                              icon: Icon(Icons.crop_16_9),
+                            TextFormField(
+                              decoration: const InputDecoration(
+                                labelText: 'Area',
+                                icon: Icon(Icons.crop_16_9),
+                              ),
                             ),
-                          ),
-                          Text(
-                            'Choose services', style: TextStyle(color: Colors.black45
+                            const Text('Choose services',
+                                style: TextStyle(color: Colors.black45)),
+                            CheckboxListTile(
+                              title: Text(
+                                widget.item.availableServices[0].name,
+                                style: const TextStyle(color: Colors.black45),
+                              ),
+                              autofocus: false,
+                              value: widget.item.availableServices[0].state,
+                              onChanged: (bool? newValue) {
+                                print(newValue);
+                                setState(() => widget.item.availableServices[0]
+                                    .state = newValue);
+                              },
+                              controlAffinity: ListTileControlAffinity
+                                  .leading, //  <-- leading Checkbox
                             )
-                            
-                          ),
 
-
-
-
-                          /*
+                            /*
                           CheckboxListTile (
                             title: new Text( "availableServices[index].name",
                             style: TextStyle( color: Colors.black45)),
@@ -66,8 +81,7 @@ class CleanerCard extends StatelessWidget {
                             }
                           ),*/
 
-
-                          /*CheckboxListTile (
+                            /*CheckboxListTile (
                             title: new Text( item.getAvailableServices()[0].name,
                             style: TextStyle( color: Colors.black45)),
                             value: item.getAvailableServices()[0].state,
@@ -75,7 +89,7 @@ class CleanerCard extends StatelessWidget {
                               item.getAvailableServices()[0].state = val == null ? false : val;
                             }
                           ),*/
-                          /*
+                            /*
                           for ( Service s in item.getAvailableServices() ) {
                             CheckboxListTile (
                             title: new Text( s.name,
@@ -88,7 +102,7 @@ class CleanerCard extends StatelessWidget {
                           }
                           */
 
-                          /*new ListView.builder(
+                            /*new ListView.builder(
                             itemCount: item.availableServices.length,
                             itemBuilder: (BuildContext context, int index) {
                             return new Card(
@@ -117,7 +131,7 @@ class CleanerCard extends StatelessWidget {
                             );
                           }
                           ),*/
-                          /*
+                            /*
                           CheckboxListTile (
                             title: new Text( item.getAvailableServices()[0].name,
                             style: TextStyle( color: Colors.black45)),
@@ -125,7 +139,7 @@ class CleanerCard extends StatelessWidget {
                             onChanged: (bool? val) {
                               if ( val == true)
                                 item.getAvailableServices()[0].state = false;
-                              else 
+                              else
                                 item.getAvailableServices()[0].state = true;
                             }
                           ),
@@ -162,7 +176,7 @@ class CleanerCard extends StatelessWidget {
                             }
                           ),
                           */
-                          /*
+                            /*
                           CheckboxListTile (
                             title: new Text( item.getAvailableServices()[5].name,
                             style: TextStyle( color: Colors.black45)),
@@ -172,10 +186,11 @@ class CleanerCard extends StatelessWidget {
                             }
                           ),
                           */
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ),
+                    );
+                  }),
                   actions: [
                     OutlinedButton(
                         child: const Text("Close"),
@@ -186,7 +201,7 @@ class CleanerCard extends StatelessWidget {
                 );
               }),
           child: Text(
-            item.name,
+            widget.item.name,
             style: Theme.of(context).textTheme.headline5,
           ),
         ),
