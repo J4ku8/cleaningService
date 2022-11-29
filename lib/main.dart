@@ -1,4 +1,5 @@
 import 'package:cleaning/Components/CleanerCard.dart';
+import 'package:cleaning/Components/textfield_widget.dart';
 import 'package:cleaning/model/Address.dart';
 import 'package:cleaning/model/Cleaner.dart';
 import 'package:cleaning/model/LtdLng.dart';
@@ -552,27 +553,27 @@ class _EditProfilePageState extends State<EditProfilePage> {
             )
           ],
         ),
-        body: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              //mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 8.0, horizontal: 0.0),
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[ Text("User settings", style: TextStyle(color: Colors.black45, fontSize: 25) ),
-                          
-                        ]),
-                  ),
-                ),
-              ],
+        body: ListView(
+          padding: EdgeInsets.symmetric(horizontal: 32),
+          physics: BouncingScrollPhysics(),
+          children: [
+            Text("User settings", style: TextStyle(color: Colors.black45, fontSize: 25)),
+            const SizedBox(height: 24),
+            TextFieldWidget(
+              label: 'First Name',
+              text: user.name,
+              onChanged: (name) {},
             ),
-          ),
-        ));
+            const SizedBox(height: 24),
+            TextFieldWidget(
+              label: 'Last Name',
+              text: user.surname,
+              onChanged: (surname) {},
+            ),
+            
+          ],
+        ),
+      );
   }
     
 
