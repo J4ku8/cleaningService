@@ -1,5 +1,6 @@
 import 'package:cleaning/model/Cleaner.dart';
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 import '../model/Service.dart';
 
@@ -15,6 +16,7 @@ class CleanerCard extends StatefulWidget {
 class CleanerCardState extends State<CleanerCard> {
   bool? selectAll = false;
   bool? object = false;
+  Random rng = new Random();
 
   @override
   Widget build(BuildContext context) {
@@ -305,6 +307,8 @@ class CleanerCardState extends State<CleanerCard> {
                                                 ],
                                               ),
                                             ),
+                                            // Cost
+                                            Center( child: Text("Price: ${100 + rng.nextInt(1000)}\$") ),
                                           ],
                                         ),
                                       ),
