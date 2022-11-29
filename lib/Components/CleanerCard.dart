@@ -1,6 +1,8 @@
 import 'package:cleaning/model/Cleaner.dart';
 import 'package:flutter/material.dart';
 
+import '../model/Service.dart';
+
 class CleanerCard extends StatefulWidget {
   final Cleaner item;
 
@@ -14,9 +16,16 @@ class CleanerCardState extends State<CleanerCard> {
   bool? selectAll = true;
   bool? object = false;
 
+
   @override
   Widget build(BuildContext context) {
+    List<Service> listOfAvailableServices = [];
     Cleaner picked = Cleaner.clone(widget.item);
+    picked.availableServices.forEach((element) {
+      if(element.state == true){
+        listOfAvailableServices.add(element);
+      }
+    });
     // picked.setServicesToFalse();
     return Container(
       decoration: BoxDecoration(
@@ -115,11 +124,11 @@ class CleanerCardState extends State<CleanerCard> {
                         alignment: Alignment.topLeft,
                         child: ListView.builder(
                           // padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
-                          itemCount: widget.item.availableServices.length,
+                          itemCount: listOfAvailableServices.length,
                           scrollDirection: Axis.vertical,
                           itemBuilder: (context, index) {
                             return SizedBox(
-                              child: Text("${widget.item.availableServices[index]}\n",
+                              child: Text("${listOfAvailableServices[index].name}\n",
                                   style: const TextStyle(
                                       fontSize: 13,
                                       height:
