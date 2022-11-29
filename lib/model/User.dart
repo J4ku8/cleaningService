@@ -13,10 +13,12 @@ class User {
 
   String name;
   String surname;
+  String email;
+  String telephone;
 
 
   User(this._uniqId, this.coords, this._address, this._password, this.name,
-      this.surname);
+      this.surname, this.email, this.telephone);
 
   int get uniqId => _uniqId;
 
@@ -34,5 +36,25 @@ class User {
 
   set address(Address value) {
     _address = value;
+  }
+
+  String get name => name;
+  set name(String value) {
+    name = value;
+  }
+
+  String get surname => surname;
+  set surname(String value) {
+    surname = value;
+  }
+
+  String get email => email;
+  set email(String value) {
+    email = value;
+  }
+
+  String get telephone => telephone;
+  set telephone(String value) {
+    telephone = value;
   }
 }
