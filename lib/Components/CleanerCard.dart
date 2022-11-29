@@ -34,6 +34,7 @@ class CleanerCard extends StatelessWidget {
                     child: Form(
                       child: Column(
                         children: <Widget>[
+                          
                           TextFormField(
                             decoration: const InputDecoration(
                               labelText: 'Address',
@@ -49,7 +50,13 @@ class CleanerCard extends StatelessWidget {
                           Text(
                             'Choose services', style: TextStyle(color: Colors.black45
                             )
-                          ),/*
+                            
+                          ),
+
+
+
+
+                          /*
                           CheckboxListTile (
                             title: new Text( "availableServices[index].name",
                             style: TextStyle( color: Colors.black45)),
@@ -58,41 +65,14 @@ class CleanerCard extends StatelessWidget {
                               item.availableServices[0].state = val == null ? false : val;
                             }
                           ),*/
-                          /*new ListView.builder(
-                            itemCount: item.getServiceCount(),
-                            itemBuilder: (BuildContext context, int index) {
-                            return new Card(
-                              child: new Container(
-                                padding: new EdgeInsets.all(10.0),
-                                child: Column(
-                                  children: <Widget>[
-                                    new CheckboxListTile(
-                                        activeColor: Colors.pink[300],
-                                        dense: true,
-                                        //font change
-                                        title: new Text(
-                                          item.getAvailableServices()[index].name,
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w600,
-                                              letterSpacing: 0.5),
-                                        ),
-                                        value: item.getAvailableServices()[index].state,
-                                        onChanged: (bool? val) {
-                                         item.getAvailableServices()[index].state = val == null ? false : val;
-                                        })
-                                  ],
-                                ),
-                              ),
-                            );
-                          }
-                          ),*/
+
+
                           /*CheckboxListTile (
-                            title: new Text( item.getAvailableServices()[index].name,
+                            title: new Text( item.getAvailableServices()[0].name,
                             style: TextStyle( color: Colors.black45)),
-                            value: item.getAvailableServices()[index].state,
+                            value: item.getAvailableServices()[0].state,
                             onChanged: (bool? val) {
-                              item.getAvailableServices()[index].state = val == null ? false : val;
+                              item.getAvailableServices()[0].state = val == null ? false : val;
                             }
                           ),*/
                           /*
@@ -108,24 +88,90 @@ class CleanerCard extends StatelessWidget {
                           }
                           */
 
-                          /*List.generate(
-                      item.getAvailableServices().length,
-                      (index) => Container(
-                          padding: EdgeInsets.all(5),
-                          margin: EdgeInsets.all(10),
-                          child: CheckboxListTile(
-                            // controlAffinity: ListTileControlAffinity.leading,
-                            title: new Text(
-                              item.getAvailableServices()[index].name,
-                              style: TextStyle(color: Colors.black45),
-                            ),
-                            value:item.getAvailableServices()[index].state,
-                            activeColor: Colors.blue,
-                            checkColor: Colors.white,
+                          /*new ListView.builder(
+                            itemCount: item.availableServices.length,
+                            itemBuilder: (BuildContext context, int index) {
+                            return new Card(
+                              child: new Container(
+                                padding: new EdgeInsets.all(10.0),
+                                child: Column(
+                                  children: <Widget>[
+                                    new CheckboxListTile(
+                                        activeColor: Colors.pink[300],
+                                        dense: true,
+                                        //font change
+                                        title: new Text(
+                                          item.availableServices[index].name,
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w600,
+                                              letterSpacing: 0.5),
+                                        ),
+                                        value: item.availableServices[index].state,
+                                        onChanged: (bool? val) {
+                                         item.availableServices[index].state = val == null ? false : val;
+                                        })
+                                  ],
+                                ),
+                              ),
+                            );
+                          }
+                          ),*/
+                          /*
+                          CheckboxListTile (
+                            title: new Text( item.getAvailableServices()[0].name,
+                            style: TextStyle( color: Colors.black45)),
+                            value: item.getAvailableServices()[0].state,
                             onChanged: (bool? val) {
-                              item.getAvailableServices()[index].state = val == null ? false : val;
-                            }*/
-
+                              if ( val == true)
+                                item.getAvailableServices()[0].state = false;
+                              else 
+                                item.getAvailableServices()[0].state = true;
+                            }
+                          ),
+                          CheckboxListTile (
+                            title: new Text( item.getAvailableServices()[1].name,
+                            style: TextStyle( color: Colors.black45)),
+                            value: item.getAvailableServices()[1].state,
+                            onChanged: (bool? val) {
+                              item.getAvailableServices()[1].state = val == null ? true : !val;
+                            }
+                          ),
+                          CheckboxListTile (
+                            title: new Text( item.getAvailableServices()[2].name,
+                            style: TextStyle( color: Colors.black45)),
+                            value: item.getAvailableServices()[2].state,
+                            onChanged: (bool? val) {
+                              item.getAvailableServices()[2].state = val == null ? true : !val;
+                            }
+                          ),
+                          CheckboxListTile (
+                            title: new Text( item.getAvailableServices()[3].name,
+                            style: TextStyle( color: Colors.black45)),
+                            value: item.getAvailableServices()[3].state,
+                            onChanged: (bool? val) {
+                              item.getAvailableServices()[3].state = val == null ? true : !val;
+                            }
+                          ),
+                          CheckboxListTile (
+                            title: new Text( item.getAvailableServices()[4].name,
+                            style: TextStyle( color: Colors.black45)),
+                            value: item.getAvailableServices()[4].state,
+                            onChanged: (bool? val) {
+                              item.getAvailableServices()[4].state = val == null ? true : !val;
+                            }
+                          ),
+                          */
+                          /*
+                          CheckboxListTile (
+                            title: new Text( item.getAvailableServices()[5].name,
+                            style: TextStyle( color: Colors.black45)),
+                            value: item.getAvailableServices()[5].state,
+                            onChanged: (bool? val) {
+                              item.getAvailableServices()[5].state = val == null ? true : !val;
+                            }
+                          ),
+                          */
                         ],
                       ),
                     ),

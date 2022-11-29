@@ -2,7 +2,7 @@
 class Service {
     
     String name;
-    bool state;
+    bool? state;
 
     Service(this.name, this.state);
 }

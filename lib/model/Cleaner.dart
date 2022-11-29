@@ -34,7 +34,9 @@ class Cleaner {
   int getServiceCount() {
     int i = 0; 
     for ( Service s in availableServices) {
-      s.state ? i++ : i ;
+      if (s.state != null)
+        if ( s.state == true)
+          i++;
     }
     return i;
   }
@@ -42,7 +44,9 @@ class Cleaner {
   List<Service> getAvailableServices() {
     final ret = <Service>[];
     for ( Service s in availableServices) {
-      s.state ? ret.insert(0,new Service(s.name, false)) : false ;
+      if (s.state != null)
+        if ( s.state == true)
+          ret.insert(0,new Service(s.name, false));
     }
     return ret;
   }
