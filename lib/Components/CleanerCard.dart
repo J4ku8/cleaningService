@@ -113,7 +113,7 @@ class CleanerCardState extends State<CleanerCard> {
                         ),
                       ),
                       Container(
-                        width: 170,
+                        width: 60,
                         alignment: Alignment.topRight,
                         child: const Text("Services: ",
                             style: TextStyle(
@@ -122,7 +122,7 @@ class CleanerCardState extends State<CleanerCard> {
                                 fontWeight: FontWeight.w400)),
                       ),
                       Container(
-                        width: 350,
+                        width: 240,
                         alignment: Alignment.topLeft,
                         child: ListView.builder(
                           // padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
