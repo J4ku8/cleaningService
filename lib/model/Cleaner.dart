@@ -62,8 +62,18 @@ class Cleaner {
     for ( Service s in availableServices) {
       if (s.state != null)
         if ( s.state == true)
-          ret.insert(0,new Service(s.name, false));
+          ret.insert(0,new Service(s.name, false, s.price));
     }
     return ret;
+  }
+
+  int getTotalPrice() {
+    int total = 0;
+    for ( Service s in availableServices) {
+        if (s.state != null && s.state == true) {
+          total= total + s.price;
+        }
+    }
+    return total;
   }
 }

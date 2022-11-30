@@ -230,7 +230,7 @@ class CleanerCardState extends State<CleanerCard> {
                                                 children: [
                                                   SizedBox(
                                                     width: 200,
-                                                    height: 400,
+                                                    height: 320,
                                                     child: Column(
                                                       children: [
                                                         SizedBox(
@@ -270,35 +270,39 @@ class CleanerCardState extends State<CleanerCard> {
                                                           height: 230,
                                                           child:
                                                               ListView.builder(
-                                                                  itemCount: listOfAvailableServices
-                                                                      .length,
+                                                                  itemCount:
+                                                                      listOfAvailableServices
+                                                                          .length,
                                                                   itemBuilder:
                                                                       (BuildContext
                                                                               context,
                                                                           int index) {
-                                                                      return CheckboxListTile(
-                                                                        title:
-                                                                            Text(
-                                                                              listOfAvailableServices[index]
-                                                                              .name,
-                                                                          style:
-                                                                              const TextStyle(color: Colors.black45),
-                                                                        ),
-                                                                        autofocus:
-                                                                            false,
-                                                                        value: picked
+                                                                    return CheckboxListTile(
+                                                                      title:
+                                                                          Text(
+                                                                        listOfAvailableServices[index]
+                                                                            .name,
+                                                                        style: const TextStyle(
+                                                                            color:
+                                                                                Colors.black45),
+                                                                      ),
+                                                                      autofocus:
+                                                                          false,
+                                                                      value: picked
+                                                                          .availableServices[
+                                                                              index]
+                                                                          .state,
+                                                                      onChanged:
+                                                                          (bool?
+                                                                              newValue) {
+                                                                        setState(() => picked
                                                                             .availableServices[index]
-                                                                            .state,
-                                                                        onChanged:
-                                                                            (bool?
-                                                                                newValue) {
-                                                                          setState(() => picked
-                                                                              .availableServices[index]
-                                                                              .state = newValue);
-                                                                        },
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.leading, //  <-- leading Checkbox
-                                                                      );
+                                                                            .state = newValue);
+                                                                      },
+                                                                      controlAffinity:
+                                                                          ListTileControlAffinity
+                                                                              .leading, //  <-- leading Checkbox
+                                                                    );
                                                                   }),
                                                         ),
                                                       ],
@@ -308,7 +312,16 @@ class CleanerCardState extends State<CleanerCard> {
                                               ),
                                             ),
                                             // Cost
-                                            Center( child: Text("Price: ${100 + rng.nextInt(1000)}\$") ),
+                                            Center( child: Text(
+                                                "Total to pay: ${picked.getTotalPrice()}\$",
+                                                style: const TextStyle(
+                                                    fontSize: 18,
+                                                    fontWeight:
+                                                    FontWeight
+                                                        .w600,
+                                                    color: Colors
+                                                        .black87)
+                                            ) ),
                                           ],
                                         ),
                                       ),
