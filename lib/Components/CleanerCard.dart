@@ -113,7 +113,7 @@ class CleanerCardState extends State<CleanerCard> {
                         ),
                       ),
                       Container(
-                        width: 60,
+                        width: 170,
                         alignment: Alignment.topRight,
                         child: const Text("Services: ",
                             style: TextStyle(
@@ -122,16 +122,16 @@ class CleanerCardState extends State<CleanerCard> {
                                 fontWeight: FontWeight.w400)),
                       ),
                       Container(
-                        width: 150,
+                        width: 350,
                         alignment: Alignment.topLeft,
                         child: ListView.builder(
                           // padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
-                          itemCount: listOfAvailableServices.length,
+                          itemCount: widget.item.stringServices.length,
                           scrollDirection: Axis.vertical,
                           itemBuilder: (context, index) {
                             return SizedBox(
                               child: Text(
-                                  "${listOfAvailableServices[index].name}\n",
+                                  "${widget.item.stringServices[index]}\n",
                                   style: const TextStyle(
                                       fontSize: 13,
                                       height:
@@ -270,39 +270,34 @@ class CleanerCardState extends State<CleanerCard> {
                                                           height: 230,
                                                           child:
                                                               ListView.builder(
-                                                                  itemCount:
-                                                                      listOfAvailableServices
-                                                                          .length,
+                                                                  itemCount: widget.item.stringServices
+                                                                      .length,
                                                                   itemBuilder:
                                                                       (BuildContext
                                                                               context,
                                                                           int index) {
-                                                                    return CheckboxListTile(
-                                                                      title:
-                                                                          Text(
-                                                                        listOfAvailableServices[index]
-                                                                            .name,
-                                                                        style: const TextStyle(
-                                                                            color:
-                                                                                Colors.black45),
-                                                                      ),
-                                                                      autofocus:
-                                                                          false,
-                                                                      value: picked
-                                                                          .availableServices[
-                                                                              index]
-                                                                          .state,
-                                                                      onChanged:
-                                                                          (bool?
-                                                                              newValue) {
-                                                                        setState(() => picked
+                                                                      return CheckboxListTile(
+                                                                        title:
+                                                                            Text(
+                                                                              widget.item.stringServices[index],
+                                                                          style:
+                                                                              const TextStyle(color: Colors.black45),
+                                                                        ),
+                                                                        autofocus:
+                                                                            false,
+                                                                        value: picked
                                                                             .availableServices[index]
-                                                                            .state = newValue);
-                                                                      },
-                                                                      controlAffinity:
-                                                                          ListTileControlAffinity
-                                                                              .leading, //  <-- leading Checkbox
-                                                                    );
+                                                                            .state,
+                                                                        onChanged:
+                                                                            (bool?
+                                                                                newValue) {
+                                                                          setState(() => picked
+                                                                              .availableServices[index]
+                                                                              .state = newValue);
+                                                                        },
+                                                                        controlAffinity:
+                                                                            ListTileControlAffinity.leading, //  <-- leading Checkbox
+                                                                      );
                                                                   }),
                                                         ),
                                                       ],

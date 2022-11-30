@@ -1,3 +1,6 @@
+import 'dart:developer';
+import 'dart:html';
+
 import 'package:cleaning/Components/CleanerCard.dart';
 import 'package:cleaning/Components/textfield_widget.dart';
 import 'package:cleaning/model/Address.dart';
@@ -14,6 +17,21 @@ import 'package:latlong2/latlong.dart';
 void main() {
   runApp(const MyApp());
 }
+
+List<String> cleaningOptions = [
+  'Sweeping',
+  'Mopping',
+  'Vacuuming',
+  'Polishing',
+  'Scrubbing',
+  'Vent cleaning',
+  'Gardening',
+  'Light Fixtures',
+  'Furniture',
+  'Deep Cleaning',
+  'Window Cleaning',
+  'Pet Cleaning',
+];
 
 List<Cleaner> services = [
   new Cleaner("Clean all", new Address("Tahkulova", "Praha", "12345", "CZ", 9),
@@ -50,7 +68,8 @@ List<Cleaner> services = [
     Service("Deep Cleaning", false, 1000),
     Service("Window Cleaning", false, 700),
     Service("Pet Cleaning", false, 600),
-  ]),
+  ],["Sweeping","Mopping","Vacuuming",
+        "Light Fixtures","Furniture"]),
   new Cleaner(
       "Clean all inclusive",
       new Address("Na Příkopech", "Praha", "12345", "CZ", 9),
@@ -89,7 +108,10 @@ List<Cleaner> services = [
     Service("Deep Cleaning", true, 600),
     Service("Window Cleaning", true, 400),
     Service("Pet Cleaning", true, 500),
-  ]),
+  ],
+      ["Sweeping","Mopping","Vacuuming","Polishing","Scrubbing","Vent cleaning",
+        "Gardening","Light Fixtures","Furniture","Deep Cleaning","Window Cleaning",
+        "Pet Cleaning",]),
   new Cleaner(
       "Poolish it!",
       new Address("Na Příkopech", "Praha", "12345", "CZ", 8),
@@ -128,7 +150,8 @@ List<Cleaner> services = [
     Service("Deep Cleaning", false, 600),
     Service("Window Cleaning", false, 300),
     Service("Pet Cleaning", false, 300),
-  ]),
+  ],["Sweeping","Mopping","Vacuuming",
+    "Light Fixtures","Furniture"]),
   new Cleaner("Clean all", new Address("Tahkulova", "Praha", "12345", "CZ", 9),
       new LtdLng(20.0, 10.0), r'$$$', 5.0, [
     "Mon: 08-00-00 - 17-00-00",
@@ -163,7 +186,8 @@ List<Cleaner> services = [
     Service("Deep Cleaning", false, 800),
     Service("Window Cleaning", false, 500),
     Service("Pet Cleaning", false, 800),
-  ]),
+  ],["Sweeping","Mopping","Vacuuming",
+        "Light Fixtures","Furniture"]),
   new Cleaner("Clean all", new Address("Tahkulova", "Praha", "12345", "CZ", 9),
       new LtdLng(20.0, 10.0), r'$$$', 5.0, [
     "Mon: 08-00-00 - 17-00-00",
@@ -198,7 +222,8 @@ List<Cleaner> services = [
     Service("Deep Cleaning", false, 1000),
     Service("Window Cleaning", false, 700),
     Service("Pet Cleaning", false, 600),
-  ]),
+  ],["Sweeping","Mopping","Vacuuming",
+        "Light Fixtures","Furniture"]),
   new Cleaner(
       "Clean all inclusive",
       new Address("Na Příkopech", "Praha", "12345", "CZ", 9),
@@ -237,7 +262,8 @@ List<Cleaner> services = [
     Service("Deep Cleaning", true, 600),
     Service("Window Cleaning", true, 400),
     Service("Pet Cleaning", true, 500),
-  ]),
+  ], ["Sweeping","Mopping","Vacuuming",
+    "Light Fixtures","Furniture"]),
   new Cleaner(
       "Poolish it!",
       new Address("Na Příkopech", "Praha", "12345", "CZ", 8),
@@ -276,7 +302,8 @@ List<Cleaner> services = [
     Service("Deep Cleaning", false, 600),
     Service("Window Cleaning", false, 300),
     Service("Pet Cleaning", false, 300),
-  ]),
+  ], ["Sweeping","Mopping","Vacuuming",
+    "Light Fixtures","Furniture"]),
   new Cleaner("Clean all", new Address("Tahkulova", "Praha", "12345", "CZ", 9),
       new LtdLng(20.0, 10.0), r'$$$', 5.0, [
     "Mon: 08-00-00 - 17-00-00",
@@ -311,7 +338,8 @@ List<Cleaner> services = [
     Service("Deep Cleaning", false, 800),
     Service("Window Cleaning", false, 500),
     Service("Pet Cleaning", false, 800),
-  ]),
+  ],["Sweeping","Mopping","Vacuuming",
+        "Light Fixtures","Furniture"]),
 ];
 
 
@@ -347,6 +375,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  List<String> activeFilters = [];
+  List<bool> filterCheckboxState =
+      List.generate(cleaningOptions.length, (e) => false);
+
+  List<Cleaner> filteredCompanies() {
+    if (activeFilters.isEmpty) return services;
+    return services
+        .where((company) => Set.of(company.stringServices)
+            .containsAll(activeFilters))
+        .toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -492,6 +532,32 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
                 Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  child: GridView.count(
+                    primary: false,
+                    crossAxisCount: 4,
+                    childAspectRatio: 10,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    shrinkWrap: true,
+                    children: List.generate(cleaningOptions.length, (index) {
+                      return CheckboxListTile(
+                        value: filterCheckboxState[index],
+                        onChanged: (value) => {
+                          filterCheckboxState[index] = value!,
+                          setState(() {}),
+                          if (value)
+                            activeFilters.add(cleaningOptions[index])
+                          else
+                            activeFilters.remove(cleaningOptions[index])
+                        },
+                        title: Text(cleaningOptions[index]),
+                      );
+                    }),
+                  ),
+                ),
+                Padding(
                   padding: const EdgeInsets.symmetric(
                       vertical: 8.0, horizontal: 0.0),
                   child: GridView.count(
@@ -502,9 +568,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisSpacing: 10,
                     crossAxisCount: 2,
                     childAspectRatio: 3,
-                    children: List.generate(services.length, (index) {
-                      return CleanerCard(item: services[index]);
-                    }),
+                    children: filteredCompanies()
+                        .map((company) => CleanerCard(item: company))
+                        .toList(),
                   ),
                 ),
               ],
@@ -522,7 +588,7 @@ class EditProfilePage extends StatefulWidget {
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
-  
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -594,11 +660,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
           physics: BouncingScrollPhysics(),
           children: [
             Center( child:Text("User settings", style: TextStyle(color: Colors.black45, fontSize: 25)),),
-            Row( 
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween ,
               children: [
                 SizedBox(height: 100),
-                new Flexible( child: 
+                new Flexible( child:
                 TextFieldWidget(
                   label: 'First Name',
                   text: user.name,
@@ -617,7 +683,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 )),
               ]
             ),
-            Row( 
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SizedBox(height: 100),
@@ -640,7 +706,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 )),
               ]
             ),
-            Row( 
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SizedBox(height: 100),
@@ -663,7 +729,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 )),
               ]
             ),
-            Row( 
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SizedBox(height: 100),
@@ -690,7 +756,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SizedBox(height: 120),
-                Padding( 
+                Padding(
                   padding: EdgeInsets.all(16.0),
                   child: Center(
                     child: ElevatedButton(
@@ -706,7 +772,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   )
                 ),
                 Spacer(),
-                Container( 
+                Container(
                   child: Center(
                     child: ElevatedButton(
                       style: ButtonStyle(
@@ -723,14 +789,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 )
               ]
             )
-            
+
           ],
         ),
       );
   }
-    
 
 
-    
-} 
-    
+
+
+}

@@ -14,9 +14,10 @@ class Cleaner {
   List<String> _availability;
   List<Review> _reviews;
   List<Service> availableServices;
+  List<String> stringServices;
 
   factory Cleaner.clone(Cleaner source) {
-    return Cleaner(source.name, source.address, source.coords, source.prizeCategory, source.ranking, source._availability, source._reviews, source.availableServices);
+    return Cleaner(source.name, source.address, source.coords, source.prizeCategory, source.ranking, source._availability, source._reviews, source.availableServices, source.stringServices);
   }
 
   void setServicesToFalse() {
@@ -33,7 +34,7 @@ class Cleaner {
 
 
   Cleaner(this.name, this.address, this.coords, this.prizeCategory,
-      this.ranking, this._availability, this._reviews, this.availableServices);
+      this.ranking, this._availability, this._reviews, this.availableServices, [this.stringServices = const []]);
 
   List<String> get availability => _availability;
 
@@ -76,4 +77,13 @@ class Cleaner {
     }
     return total;
   }
+
+  List<String> getAvailableServicesAsString() {
+    final ret = <String>[];
+    for (var service in availableServices) {
+      if (service.state! == true) ret.add(service.name);
+    }
+    return ret;
+  }
+
 }
