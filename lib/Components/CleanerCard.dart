@@ -111,7 +111,7 @@ class CleanerCardState extends State<CleanerCard> {
                         ),
                       ),
                       Container(
-                        width: 60,
+                        width: 170,
                         alignment: Alignment.topRight,
                         child: const Text("Services: ",
                             style: TextStyle(
@@ -120,16 +120,16 @@ class CleanerCardState extends State<CleanerCard> {
                                 fontWeight: FontWeight.w400)),
                       ),
                       Container(
-                        width: 150,
+                        width: 350,
                         alignment: Alignment.topLeft,
                         child: ListView.builder(
                           // padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
-                          itemCount: listOfAvailableServices.length,
+                          itemCount: widget.item.stringServices.length,
                           scrollDirection: Axis.vertical,
                           itemBuilder: (context, index) {
                             return SizedBox(
                               child: Text(
-                                  "${listOfAvailableServices[index].name}\n",
+                                  "${widget.item.stringServices[index]}\n",
                                   style: const TextStyle(
                                       fontSize: 13,
                                       height:
@@ -268,7 +268,7 @@ class CleanerCardState extends State<CleanerCard> {
                                                           height: 230,
                                                           child:
                                                               ListView.builder(
-                                                                  itemCount: listOfAvailableServices
+                                                                  itemCount: widget.item.stringServices
                                                                       .length,
                                                                   itemBuilder:
                                                                       (BuildContext
@@ -277,8 +277,7 @@ class CleanerCardState extends State<CleanerCard> {
                                                                       return CheckboxListTile(
                                                                         title:
                                                                             Text(
-                                                                              listOfAvailableServices[index]
-                                                                              .name,
+                                                                              widget.item.stringServices[index],
                                                                           style:
                                                                               const TextStyle(color: Colors.black45),
                                                                         ),
