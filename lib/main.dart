@@ -11,10 +11,7 @@ import 'package:cleaning/model/Service.dart';
 import 'package:cleaning/model/User.dart';
 import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
-import 'package:date_field/date_field.dart';
 import 'maps.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart';
 
 main() {
   runApp(const MyApp());
@@ -37,7 +34,7 @@ List<String> cleaningOptions = [
 
 List<Cleaner> services = [
   new Cleaner("Clean all", new Address("Tahkulova", "Praha", "12345", "CZ", 9),
-      new LtdLng(20.0, 10.0), r'$$$', 5.0, [
+      new LtdLng(20.0, 10.0), r'$$', 5.0, [
     "Mon: 08-00-00 - 17-00-00",
     "Tue: 08-00-00 - 17-00-00",
     "Wen: 08-00-00 - 17-00-00",
@@ -56,7 +53,7 @@ List<Cleaner> services = [
             "Jan",
             "Petželka"),
         "25.11.2022",
-        3.5)
+        3)
   ], [
     Service("Sweeping", true, 500),
     Service("Mopping", true, 600),
@@ -119,7 +116,7 @@ List<Cleaner> services = [
       new Address("Na Příkopech", "Praha", "12345", "CZ", 8),
       new LtdLng(20.0, 12.0),
       r'$',
-      4.7, [
+      2, [
     "Mon: -",
     "Tue: -",
     "Wen: -",
@@ -210,7 +207,7 @@ List<Cleaner> services = [
             "Jan",
             "Petželka"),
         "25.11.2022",
-        3.5)
+        4)
   ], [
     Service("Sweeping", true, 500),
     Service("Mopping", true, 600),
@@ -271,7 +268,7 @@ List<Cleaner> services = [
       new Address("Na Příkopech", "Praha", "12345", "CZ", 8),
       new LtdLng(20.0, 12.0),
       r'$',
-      4.7, [
+      4, [
     "Mon: -",
     "Tue: -",
     "Wen: -",
@@ -463,49 +460,49 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Column(
               //mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 8.0, horizontal: 0.0),
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          SizedBox(
-                            height: 50,
-                            width: 250,
-                            child: DateTimeFormField(
-                              decoration: const InputDecoration(
-                                hintStyle: TextStyle(color: Colors.black45),
-                                errorStyle: TextStyle(color: Colors.redAccent),
-                                border: OutlineInputBorder(),
-                                suffixIcon: Icon(Icons.event_note),
-                                labelText: 'Pick a date and time',
-                              ),
-                              mode: DateTimeFieldPickerMode.dateAndTime,
-                              autovalidateMode: AutovalidateMode.always,
-                              validator: (e) => (e?.day ?? 0) == 1
-                                  ? 'Please not the first day'
-                                  : null,
-                              onDateSelected: (DateTime value) {
-                                print(value);
-                              },
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 50,
-                            width: 250,
-                            child: TextField(
-                              style: TextStyle(color: Colors.black45),
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(),
-                                hintText: 'Enter a search term',
-                              ),
-                            ),
-                          )
-                        ]),
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(
+                //       vertical: 8.0, horizontal: 0.0),
+                //   child: SizedBox(
+                //     width: MediaQuery.of(context).size.width * 0.5,
+                //     child: Row(
+                //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //         children: <Widget>[
+                //           SizedBox(
+                //             height: 50,
+                //             width: 250,
+                //             child: DateTimeFormField(
+                //               decoration: const InputDecoration(
+                //                 hintStyle: TextStyle(color: Colors.black45),
+                //                 errorStyle: TextStyle(color: Colors.redAccent),
+                //                 border: OutlineInputBorder(),
+                //                 suffixIcon: Icon(Icons.event_note),
+                //                 labelText: 'Pick a date and time',
+                //               ),
+                //               mode: DateTimeFieldPickerMode.dateAndTime,
+                //               autovalidateMode: AutovalidateMode.always,
+                //               validator: (e) => (e?.day ?? 0) == 1
+                //                   ? 'Please not the first day'
+                //                   : null,
+                //               onDateSelected: (DateTime value) {
+                //                 print(value);
+                //               },
+                //             ),
+                //           ),
+                //           const SizedBox(
+                //             height: 50,
+                //             width: 250,
+                //             child: TextField(
+                //               style: TextStyle(color: Colors.black45),
+                //               decoration: InputDecoration(
+                //                 border: OutlineInputBorder(),
+                //                 hintText: 'Enter a search term',
+                //               ),
+                //             ),
+                //           )
+                //         ]),
+                //   ),
+                // ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[

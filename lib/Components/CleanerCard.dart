@@ -117,7 +117,7 @@ class CleanerCardState extends State<CleanerCard> {
                         alignment: Alignment.topRight,
                         child: const Text("Services: ",
                             style: TextStyle(
-                                fontSize: 13,
+                                fontSize: 14,
                                 height: 1,
                                 fontWeight: FontWeight.w400)),
                       ),
