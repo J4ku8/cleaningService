@@ -1,13 +1,16 @@
+import 'dart:math';
+
 import 'package:cleaning/model/Cleaner.dart';
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 import '../model/Service.dart';
 
 class CleanerCard extends StatefulWidget {
   final Cleaner item;
+  final List<String> activeFilters;
 
-  const CleanerCard({Key? key, required this.item}) : super(key: key);
+  const CleanerCard({Key? key, required this.item, required this.activeFilters})
+      : super(key: key);
 
   @override
   CleanerCardState createState() => CleanerCardState();
@@ -67,7 +70,6 @@ class CleanerCardState extends State<CleanerCard> {
                     SizedBox(
                         width: 80,
                         child: Row(
-                          // mainAxisSize: MainAxisSize.min,
                           children: List.generate(5, (index) {
                             return Icon(
                               index < widget.item.ranking.toInt()
@@ -77,15 +79,11 @@ class CleanerCardState extends State<CleanerCard> {
                               size: 15.0,
                             );
                           }),
-                          // children: [
-                          //   Text(item.ranking.toString()),
-                          // ],
                         )),
                   ],
                 ),
               ),
               Flexible(
-                // child: FittedBox(
                 fit: FlexFit.loose,
                 child: Container(
                   padding:
@@ -96,7 +94,6 @@ class CleanerCardState extends State<CleanerCard> {
                       SizedBox(
                         width: 200,
                         child: ListView.builder(
-                          // padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
                           itemCount: widget.item.availability.length,
                           scrollDirection: Axis.vertical,
                           itemBuilder: (context, index) {
@@ -125,7 +122,6 @@ class CleanerCardState extends State<CleanerCard> {
                         width: 240,
                         alignment: Alignment.topLeft,
                         child: ListView.builder(
-                          // padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
                           itemCount: widget.item.stringServices.length,
                           scrollDirection: Axis.vertical,
                           itemBuilder: (context, index) {
@@ -144,7 +140,6 @@ class CleanerCardState extends State<CleanerCard> {
                     ],
                   ),
                 ),
-                // ),
               ),
               Container(
                 padding:
@@ -270,34 +265,42 @@ class CleanerCardState extends State<CleanerCard> {
                                                           height: 230,
                                                           child:
                                                               ListView.builder(
-                                                                  itemCount: widget.item.stringServices
+                                                                  itemCount: widget
+                                                                      .item
+                                                                      .stringServices
                                                                       .length,
                                                                   itemBuilder:
                                                                       (BuildContext
                                                                               context,
                                                                           int index) {
-                                                                      return CheckboxListTile(
-                                                                        title:
-                                                                            Text(
-                                                                              widget.item.stringServices[index],
-                                                                          style:
-                                                                              const TextStyle(color: Colors.black45),
-                                                                        ),
-                                                                        autofocus:
-                                                                            false,
-                                                                        value: picked
-                                                                            .availableServices[index]
-                                                                            .state,
-                                                                        onChanged:
-                                                                            (bool?
-                                                                                newValue) {
-                                                                          setState(() => picked
+                                                                    return CheckboxListTile(
+                                                                      title:
+                                                                          Text(
+                                                                        widget
+                                                                            .item
+                                                                            .stringServices[index],
+                                                                        style: const TextStyle(
+                                                                            color:
+                                                                                Colors.black45),
+                                                                      ),
+                                                                      autofocus:
+                                                                          false,
+                                                                      value: widget
+                                                                          .activeFilters
+                                                                          .contains(picked
                                                                               .availableServices[index]
-                                                                              .state = newValue);
-                                                                        },
-                                                                        controlAffinity:
-                                                                            ListTileControlAffinity.leading, //  <-- leading Checkbox
-                                                                      );
+                                                                              .name),
+                                                                      onChanged:
+                                                                          (bool?
+                                                                              newValue) {
+                                                                        setState(() => picked
+                                                                            .availableServices[index]
+                                                                            .state = newValue);
+                                                                      },
+                                                                      controlAffinity:
+                                                                          ListTileControlAffinity
+                                                                              .leading, //  <-- leading Checkbox
+                                                                    );
                                                                   }),
                                                         ),
                                                       ],
@@ -307,16 +310,15 @@ class CleanerCardState extends State<CleanerCard> {
                                               ),
                                             ),
                                             // Cost
-                                            Center( child: Text(
-                                                "Total to pay: ${picked.getTotalPrice()}\$",
-                                                style: const TextStyle(
-                                                    fontSize: 18,
-                                                    fontWeight:
-                                                    FontWeight
-                                                        .w600,
-                                                    color: Colors
-                                                        .black87)
-                                            ) ),
+                                            Center(
+                                                child: Text(
+                                                    "Total to pay: ${picked.getTotalPrice()}\$",
+                                                    style: const TextStyle(
+                                                        fontSize: 18,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color:
+                                                            Colors.black87))),
                                           ],
                                         ),
                                       ),

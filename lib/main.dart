@@ -551,7 +551,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     crossAxisCount: 2,
                     childAspectRatio: 3,
                     children: filteredCompanies()
-                        .map((company) => CleanerCard(item: company))
+                        .map((company) => CleanerCard(item: company, activeFilters: activeFilters,))
                         .toList(),
                   ),
                 ),
