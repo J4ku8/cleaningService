@@ -1,25 +1,27 @@
 import 'dart:html';
 
+import 'package:cleaning/model/Cleaner.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps/google_maps.dart';
 import 'dart:ui' as ui;
 
-class GoogleMap extends StatelessWidget {
-  const GoogleMap({super.key});
+class GoogleMap extends StatefulWidget {
+  final List<Cleaner> dataForMarkers;
+  final List<String> filtered;
+
+  const GoogleMap({Key? key, required this.dataForMarkers, required this.filtered})
+      : super(key: key);
+
+  @override
+  GoogleMapState createState() => GoogleMapState();
+}
+
+class GoogleMapState extends State<GoogleMap> {
 
   @override
   Widget build(BuildContext context) {
     String htmlId = "7";
     LatLng center = LatLng(50.105092, 14.389680);
-
-    List<LatLng> positions = [
-      LatLng(50.105092, 14.389680),
-      LatLng(50.106092, 14.389680),
-      LatLng(50.104092, 14.389680),
-      LatLng(50.105092, 14.390680),
-      LatLng(50.105092, 14.388680),
-    ];
-
     // ignore: undefined_prefixed_name
     ui.platformViewRegistry.registerViewFactory(htmlId, (int viewId) {
       final mapOptions = MapOptions()
@@ -33,17 +35,23 @@ class GoogleMap extends StatelessWidget {
         ..style.border = 'none';
 
       final map = GMap(elem, mapOptions);
+      var showMarker = true;
 
-      for (var element in positions) {
+      for (var element in widget.dataForMarkers) {
+        for(var service in element.availableServices){
+          if(widget.filtered.length > 0 && !widget.filtered.contains(service)){
+            showMarker = false;
+          }
+        }
         var marker = Marker(MarkerOptions()
-          ..position = element
+          ..position = element.coords
           ..map = map
-          ..title = 'test'
+          ..title = element.name
           ..clickable = true);
-        final infoWindow = InfoWindow(InfoWindowOptions()..content = 'test');
+        final infoWindow = InfoWindow(InfoWindowOptions()..content = "${element.name} - ${element.address.city}, ${element.address.street}, ${element.address.number}");
         marker.onClick.listen((event) => infoWindow.open(map, marker));
+        marker.visible = showMarker;
       }
-
       return elem;
     });
 

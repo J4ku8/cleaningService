@@ -9,8 +9,8 @@ import 'package:cleaning/model/LtdLng.dart';
 import 'package:cleaning/model/Review.dart';
 import 'package:cleaning/model/Service.dart';
 import 'package:cleaning/model/User.dart';
-import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps/google_maps.dart' as google;
 import 'maps.dart';
 
 main() {
@@ -31,37 +31,35 @@ List<String> cleaningOptions = [
     'Mytí oken',
     'Úklid po zvířatech',
 ];
-
 List<Cleaner> services = [
   new Cleaner("Uklízím celý den", new Address("Tahkulova", "Praha", "160 00", "CZ", 9),
       new LtdLng(50.10501838533533, 14.388725717003036), r'$$', 5.0, [
-    "Po: 08-00-00 - 17-00-00",
-    "Út: 08-00-00 - 17-00-00",
-    "St: 08-00-00 - 17-00-00",
-    "Čt: 08-00-00 - 17-00-00",
-    "Pá: 08-00-00 - 17-00-00",
-    "So: 08-00-00 - 17-00-00",
-    "Ne: -"
-  ], 
-  [],
-  [
-    Service("Zametání", true, 500),
-    Service("Vytírání", true, 600),
-    Service("Vysávání", true, 450),
-    Service("Leštění nábytku", false, 900),
-    Service("Drhnutí podlah", false, 500),
-    Service("Ventilace", false, 1000),
-    Service("Zametení zahrady", false, 1200),
-    Service("Lustry", true, 300),
-    Service("Prach", true, 800),
-    Service("Čalounění", false, 1000),
-    Service("Mytí oken", false, 700),
-    Service("Úklid po zvířatech", false, 600),
-  ],
-  ["Zametání", "Vytírání", "Vysávání", "Lustry", "Prach"]
- ),
+        "Po: 08-00-00 - 17-00-00",
+        "Út: 08-00-00 - 17-00-00",
+        "St: 08-00-00 - 17-00-00",
+        "Čt: 08-00-00 - 17-00-00",
+        "Pá: 08-00-00 - 17-00-00",
+        "So: 08-00-00 - 17-00-00",
+        "Ne: -"
+      ],
+      [],
+      [
+        Service("Zametání", true, 500),
+        Service("Vytírání", true, 600),
+        Service("Vysávání", true, 450),
+        Service("Leštění nábytku", false, 900),
+        Service("Drhnutí podlah", false, 500),
+        Service("Ventilace", false, 1000),
+        Service("Zametení zahrady", false, 1200),
+        Service("Lustry", true, 300),
+        Service("Prach", true, 800),
+        Service("Čalounění", false, 1000),
+        Service("Mytí oken", false, 700),
+        Service("Úklid po zvířatech", false, 600),
+      ],
+      ["Zametání", "Vytírání", "Vysávání", "Lustry", "Prach"]
+  ),
 ];
-
 
 User user = new User( 1, new LtdLng(0001.00, 000.1111), new Address("Hradčanská", "Praha", "123", "CZ", 10), "_password", "Petr", "Adam", "petradam@example.com", "+420 737 542 111");
 
@@ -233,7 +231,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     SizedBox(
                       height: 400,
                       width: MediaQuery.of(context).size.width,
-                      child: GoogleMap(),
+                      child: GoogleMap(dataForMarkers: services, filtered: activeFilters),
                     )
                   ],
                 ),

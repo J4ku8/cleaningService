@@ -1,13 +1,13 @@
 import 'package:cleaning/model/Address.dart';
-import 'package:cleaning/model/LtdLng.dart';
 import 'package:cleaning/model/Review.dart';
 import 'package:cleaning/model/Service.dart';
+import 'package:google_maps/google_maps.dart';
 
 class Cleaner {
 
   String name;
   Address address;
-  LtdLng coords;
+  LatLng coords;
 
   String prizeCategory;
   double ranking;
