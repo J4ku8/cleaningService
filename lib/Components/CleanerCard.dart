@@ -112,7 +112,7 @@ class CleanerCardState extends State<CleanerCard> {
                       Container(
                         width: 60,
                         alignment: Alignment.topRight,
-                        child: const Text("Services: ",
+                        child: const Text("Služby: ",
                             style: TextStyle(
                                 fontSize: 14,
                                 height: 1,
@@ -167,7 +167,7 @@ class CleanerCardState extends State<CleanerCard> {
                               builder: (BuildContext context) {
                                 return AlertDialog(
                                   scrollable: true,
-                                  title: const Text('Create Order',
+                                  title: const Text('Vytvoření objednávky',
                                       style: TextStyle(color: Colors.black45)),
                                   content: StatefulBuilder(builder:
                                       (BuildContext context,
@@ -179,7 +179,7 @@ class CleanerCardState extends State<CleanerCard> {
                                           children: <Widget>[
                                             CheckboxListTile(
                                               title: const Text(
-                                                "Clean your object",
+                                                "Uložená adresa",
                                                 style: TextStyle(
                                                     color: Colors.black45),
                                               ),
@@ -197,25 +197,25 @@ class CleanerCardState extends State<CleanerCard> {
                                               TextFormField(
                                                 decoration:
                                                     const InputDecoration(
-                                                  labelText: 'Address',
+                                                  labelText: 'Adresa',
                                                   icon: Icon(Icons.place),
                                                 ),
                                               ),
                                             TextFormField(
                                               decoration: const InputDecoration(
-                                                labelText: 'Area in m^2',
+                                                labelText: 'Plocha v m^2',
                                                 icon: Icon(Icons.crop_16_9),
                                               ),
                                             ),
                                             TextFormField(
                                               decoration: const InputDecoration(
-                                                labelText: 'Notes',
+                                                labelText: 'Poznámky',
                                                 icon: Icon(Icons.edit_outlined),
                                               ),
                                             ),
                                             const Padding(
                                               padding: EdgeInsets.only(top: 20),
-                                              child: Text('Choose services',
+                                              child: Text('Vyberte služby',
                                                   style: TextStyle(
                                                       color: Colors.black45)),
                                             ),
@@ -234,7 +234,7 @@ class CleanerCardState extends State<CleanerCard> {
                                                           child:
                                                               CheckboxListTile(
                                                             title: const Text(
-                                                              "Select all",
+                                                              "Vybrat vše",
                                                               style: TextStyle(
                                                                   color: Colors
                                                                       .black45),
@@ -312,7 +312,7 @@ class CleanerCardState extends State<CleanerCard> {
                                             // Cost
                                             Center(
                                                 child: Text(
-                                                    "Total to pay: ${picked.getTotalPrice()}\$",
+                                                    "Celková cena: ${picked.getTotalPrice()}Kč",
                                                     style: const TextStyle(
                                                         fontSize: 18,
                                                         fontWeight:
@@ -330,7 +330,7 @@ class CleanerCardState extends State<CleanerCard> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         TextButton(
-                                            child: const Text("Close"),
+                                            child: const Text("Zavřít"),
                                             onPressed: () {
                                               Navigator.of(context).pop();
                                             }),
@@ -374,7 +374,7 @@ class CleanerCardState extends State<CleanerCard> {
                                                                         .all(
                                                                             10.0),
                                                                 child: Text(
-                                                                    "Paid!",
+                                                                    "Zaplaceno!",
                                                                     style: TextStyle(
                                                                         color: Colors
                                                                             .black45)),
@@ -388,7 +388,7 @@ class CleanerCardState extends State<CleanerCard> {
                                                         padding: EdgeInsets.all(
                                                             10.0),
                                                         child: Text(
-                                                            "Proccessing payment",
+                                                            "Zpracovávání platby",
                                                             style: TextStyle(
                                                                 color: Colors
                                                                     .black45)),
@@ -396,14 +396,14 @@ class CleanerCardState extends State<CleanerCard> {
                                                     );
                                                   });
                                             },
-                                            child: const Text("Order and pay"))
+                                            child: const Text("Objednat a zaplatit"))
                                       ],
                                     ),
                                   ],
                                 );
                               });
                         },
-                        child: const Text('Order'),
+                        child: const Text('Objednat'),
                       ),
                     ),
                   ],

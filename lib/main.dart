@@ -18,327 +18,48 @@ main() {
 }
 
 List<String> cleaningOptions = [
-  'Sweeping',
-  'Mopping',
-  'Vacuuming',
-  'Polishing',
-  'Scrubbing',
-  'Vent cleaning',
-  'Gardening',
-  'Light Fixtures',
-  'Furniture',
-  'Deep Cleaning',
-  'Window Cleaning',
-  'Pet Cleaning',
+    'Zametání',
+    'Vytírání',
+    'Vysávání',
+    'Leštění nábytku',
+    'Drhnutí podlah',
+    'Ventilace',
+    'Zametení zahrady',
+    'Lustry',
+    'Prach',
+    'Čalounění',
+    'Mytí oken',
+    'Úklid po zvířatech',
 ];
 
 List<Cleaner> services = [
-  new Cleaner("Clean all", new Address("Tahkulova", "Praha", "12345", "CZ", 9),
-      new LtdLng(20.0, 10.0), r'$$', 5.0, [
-    "Mon: 08-00-00 - 17-00-00",
-    "Tue: 08-00-00 - 17-00-00",
-    "Wen: 08-00-00 - 17-00-00",
-    "Thr: 08-00-00 - 17-00-00",
-    "Fri: 08-00-00 - 17-00-00",
-    "Sat: 08-00-00 - 17-00-00",
-    "Sun: -"
-  ], [
-    new Review(
-        "Clean all",
-        new User(
-            0,
-            new LtdLng(0000.00, 000.1111),
-            new Address("Downing Street", "London", "123", "GB", 10),
-            "_password",
-            "Jan",
-            "Petželka"),
-        "25.11.2022",
-        3)
-  ], [
-    Service("Sweeping", true, 500),
-    Service("Mopping", true, 600),
-    Service("Vacuuming", true, 450),
-    Service("Polishing", false, 900),
-    Service("Scrubbing", false, 500),
-    Service("Vent cleaning", false, 1000),
-    Service("Gardening", false, 1200),
-    Service("Light Fixtures", true, 300),
-    Service("Furniture", true, 800),
-    Service("Deep Cleaning", false, 1000),
-    Service("Window Cleaning", false, 700),
-    Service("Pet Cleaning", false, 600),
-  ],["Sweeping","Mopping","Vacuuming",
-        "Light Fixtures","Furniture"]),
-  new Cleaner(
-      "Clean all inclusive",
-      new Address("Na Příkopech", "Praha", "12345", "CZ", 9),
-      new LtdLng(20.0, 10.0),
-      r'$$',
-      5, [
-    "Mon: 08-00-00 - 17-00-00",
-    "Tue: 08-00-00 - 17-00-00",
-    "Wen: 08-00-00 - 17-00-00",
-    "Thr: 08-00-00 - 17-00-00",
-    "Fri: 08-00-00 - 17-00-00",
-    "Sat: -",
-    "Sun: -"
-  ], [
-    new Review(
-        "Clean not all",
-        new User(
-            1,
-            new LtdLng(0001.00, 000.1111),
-            new Address("Hradčanská", "Praha", "123", "CZ", 10),
-            "_password",
-            "Petr",
-            "Adam"),
-        "25.11.2022",
-        3)
-  ], [
-    Service("Sweeping", true, 300),
-    Service("Mopping", true, 400),
-    Service("Vacuuming", true, 300),
-    Service("Polishing", true, 500),
-    Service("Scrubbing", true, 600),
-    Service("Vent cleaning", true, 800),
-    Service("Gardening", true, 1000),
-    Service("Light Fixtures", true, 200),
-    Service("Furniture", true, 300),
-    Service("Deep Cleaning", true, 600),
-    Service("Window Cleaning", true, 400),
-    Service("Pet Cleaning", true, 500),
+  new Cleaner("Uklízím celý den", new Address("Tahkulova", "Praha", "160 00", "CZ", 9),
+      new LtdLng(50.10501838533533, 14.388725717003036), r'$$', 5.0, [
+    "Po: 08-00-00 - 17-00-00",
+    "Út: 08-00-00 - 17-00-00",
+    "St: 08-00-00 - 17-00-00",
+    "Čt: 08-00-00 - 17-00-00",
+    "Pá: 08-00-00 - 17-00-00",
+    "So: 08-00-00 - 17-00-00",
+    "Ne: -"
+  ], 
+  [],
+  [
+    Service("Zametání", true, 500),
+    Service("Vytírání", true, 600),
+    Service("Vysávání", true, 450),
+    Service("Leštění nábytku", false, 900),
+    Service("Drhnutí podlah", false, 500),
+    Service("Ventilace", false, 1000),
+    Service("Zametení zahrady", false, 1200),
+    Service("Lustry", true, 300),
+    Service("Prach", true, 800),
+    Service("Čalounění", false, 1000),
+    Service("Mytí oken", false, 700),
+    Service("Úklid po zvířatech", false, 600),
   ],
-      ["Sweeping","Mopping","Vacuuming","Polishing","Scrubbing","Vent cleaning",
-        "Gardening","Light Fixtures","Furniture","Deep Cleaning","Window Cleaning",
-        "Pet Cleaning",]),
-  new Cleaner(
-      "Poolish it!",
-      new Address("Na Příkopech", "Praha", "12345", "CZ", 8),
-      new LtdLng(20.0, 12.0),
-      r'$',
-      2, [
-    "Mon: -",
-    "Tue: -",
-    "Wen: -",
-    "Thr: -",
-    "Fri: 08-00-00 - 17-00-00",
-    "Sat: 08-00-00 - 17-00-00",
-    "Sun: 08-00-00 - 17-00-00"
-  ], [
-    new Review(
-        "Poolish it!",
-        new User(
-            2,
-            new LtdLng(0021.00, 000.1111),
-            new Address("Vysočanská", "Praha", "123", "CZ", 221),
-            "_password",
-            "Adam",
-            "Petr"),
-        "25.11.2022",
-        2.0)
-  ], [
-    Service("Sweeping", true, 300),
-    Service("Mopping", true, 300),
-    Service("Vacuuming", true, 300),
-    Service("Polishing", false, 300),
-    Service("Scrubbing", false, 400),
-    Service("Vent cleaning", false, 600),
-    Service("Gardening", false, 800),
-    Service("Light Fixtures", true, 150),
-    Service("Furniture", true, 400),
-    Service("Deep Cleaning", false, 600),
-    Service("Window Cleaning", false, 300),
-    Service("Pet Cleaning", false, 300),
-  ],["Sweeping","Mopping","Vacuuming",
-    "Light Fixtures","Furniture"]),
-  new Cleaner("Clean all", new Address("Tahkulova", "Praha", "12345", "CZ", 9),
-      new LtdLng(20.0, 10.0), r'$$$', 5.0, [
-    "Mon: 08-00-00 - 17-00-00",
-    "Tue: 08-00-00 - 17-00-00",
-    "Wen: 08-00-00 - 17-00-00",
-    "Thr: 08-00-00 - 17-00-00",
-    "Fri: 08-00-00 - 17-00-00",
-    "Sat: -",
-    "Sun: -"
-  ], [
-    new Review(
-        "Clean all",
-        new User(
-            0,
-            new LtdLng(0000.00, 000.1111),
-            new Address("Downing Street", "London", "123", "GB", 10),
-            "_password",
-            "Jan",
-            "Petželka"),
-        "25.11.2022",
-        4)
-  ], [
-    Service("Sweeping", true, 500),
-    Service("Mopping", true, 600),
-    Service("Vacuuming", true, 600),
-    Service("Polishing", false, 500),
-    Service("Scrubbing", false, 500),
-    Service("Vent cleaning", false, 1000),
-    Service("Gardening", false, 1100),
-    Service("Light Fixtures", true, 250),
-    Service("Furniture", true, 400),
-    Service("Deep Cleaning", false, 800),
-    Service("Window Cleaning", false, 500),
-    Service("Pet Cleaning", false, 800),
-  ],["Sweeping","Mopping","Vacuuming",
-        "Light Fixtures","Furniture"]),
-  new Cleaner("Clean all", new Address("Tahkulova", "Praha", "12345", "CZ", 9),
-      new LtdLng(20.0, 10.0), r'$$$', 5.0, [
-    "Mon: 08-00-00 - 17-00-00",
-    "Tue: 08-00-00 - 17-00-00",
-    "Wen: 08-00-00 - 17-00-00",
-    "Thr: 08-00-00 - 17-00-00",
-    "Fri: 08-00-00 - 17-00-00",
-    "Sat: 08-00-00 - 17-00-00",
-    "Sun: -"
-  ], [
-    new Review(
-        "Clean all",
-        new User(
-            0,
-            new LtdLng(0000.00, 000.1111),
-            new Address("Downing Street", "London", "123", "GB", 10),
-            "_password",
-            "Jan",
-            "Petželka"),
-        "25.11.2022",
-        4)
-  ], [
-    Service("Sweeping", true, 500),
-    Service("Mopping", true, 600),
-    Service("Vacuuming", true, 450),
-    Service("Polishing", false, 900),
-    Service("Scrubbing", false, 500),
-    Service("Vent cleaning", false, 1000),
-    Service("Gardening", false, 1200),
-    Service("Light Fixtures", true, 300),
-    Service("Furniture", true, 800),
-    Service("Deep Cleaning", false, 1000),
-    Service("Window Cleaning", false, 700),
-    Service("Pet Cleaning", false, 600),
-  ],["Sweeping","Mopping","Vacuuming",
-        "Light Fixtures","Furniture"]),
-  new Cleaner(
-      "Clean all inclusive",
-      new Address("Na Příkopech", "Praha", "12345", "CZ", 9),
-      new LtdLng(20.0, 10.0),
-      r'$$',
-      5, [
-    "Mon: 08-00-00 - 17-00-00",
-    "Tue: 08-00-00 - 17-00-00",
-    "Wen: 08-00-00 - 17-00-00",
-    "Thr: 08-00-00 - 17-00-00",
-    "Fri: 08-00-00 - 17-00-00",
-    "Sat: -",
-    "Sun: -"
-  ], [
-    new Review(
-        "Clean not all",
-        new User(
-            1,
-            new LtdLng(0001.00, 000.1111),
-            new Address("Hradčanská", "Praha", "123", "CZ", 10),
-            "_password",
-            "Petr",
-            "Adam"),
-        "25.11.2022",
-        3)
-  ], [
-    Service("Sweeping", true, 300),
-    Service("Mopping", true, 400),
-    Service("Vacuuming", true, 300),
-    Service("Polishing", true, 500),
-    Service("Scrubbing", true, 600),
-    Service("Vent cleaning", true, 800),
-    Service("Gardening", true, 1000),
-    Service("Light Fixtures", true, 200),
-    Service("Furniture", true, 300),
-    Service("Deep Cleaning", true, 600),
-    Service("Window Cleaning", true, 400),
-    Service("Pet Cleaning", true, 500),
-  ], ["Sweeping","Mopping","Vacuuming",
-    "Light Fixtures","Furniture"]),
-  new Cleaner(
-      "Poolish it!",
-      new Address("Na Příkopech", "Praha", "12345", "CZ", 8),
-      new LtdLng(20.0, 12.0),
-      r'$',
-      4, [
-    "Mon: -",
-    "Tue: -",
-    "Wen: -",
-    "Thr: -",
-    "Fri: 08-00-00 - 17-00-00",
-    "Sat: 08-00-00 - 17-00-00",
-    "Sun: 08-00-00 - 17-00-00"
-  ], [
-    new Review(
-        "Poolish it!",
-        new User(
-            2,
-            new LtdLng(0021.00, 000.1111),
-            new Address("Vysočanská", "Praha", "123", "CZ", 221),
-            "_password",
-            "Adam",
-            "Petr"),
-        "25.11.2022",
-        2.0)
-  ], [
-    Service("Sweeping", true, 300),
-    Service("Mopping", true, 300),
-    Service("Vacuuming", true, 300),
-    Service("Polishing", false, 300),
-    Service("Scrubbing", false, 400),
-    Service("Vent cleaning", false, 600),
-    Service("Gardening", false, 800),
-    Service("Light Fixtures", true, 150),
-    Service("Furniture", true, 400),
-    Service("Deep Cleaning", false, 600),
-    Service("Window Cleaning", false, 300),
-    Service("Pet Cleaning", false, 300),
-  ], ["Sweeping","Mopping","Vacuuming",
-    "Light Fixtures","Furniture"]),
-  new Cleaner("Clean all", new Address("Tahkulova", "Praha", "12345", "CZ", 9),
-      new LtdLng(20.0, 10.0), r'$$$', 5.0, [
-    "Mon: 08-00-00 - 17-00-00",
-    "Tue: 08-00-00 - 17-00-00",
-    "Wen: 08-00-00 - 17-00-00",
-    "Thr: 08-00-00 - 17-00-00",
-    "Fri: 08-00-00 - 17-00-00",
-    "Sat: -",
-    "Sun: -"
-  ], [
-    new Review(
-        "Clean all",
-        new User(
-            0,
-            new LtdLng(0000.00, 000.1111),
-            new Address("Downing Street", "London", "123", "GB", 10),
-            "_password",
-            "Jan",
-            "Petželka"),
-        "25.11.2022",
-        4)
-  ], [
-    Service("Sweeping", true, 500),
-    Service("Mopping", true, 600),
-    Service("Vacuuming", true, 600),
-    Service("Polishing", false, 500),
-    Service("Scrubbing", false, 500),
-    Service("Vent cleaning", false, 1000),
-    Service("Gardening", false, 1100),
-    Service("Light Fixtures", true, 250),
-    Service("Furniture", true, 400),
-    Service("Deep Cleaning", false, 800),
-    Service("Window Cleaning", false, 500),
-    Service("Pet Cleaning", false, 800),
-  ],["Sweeping","Mopping","Vacuuming",
-        "Light Fixtures","Furniture"]),
+  ["Zametání", "Vytírání", "Vysávání", "Lustry", "Prach"]
+ ),
 ];
 
 
@@ -641,14 +362,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
           padding: EdgeInsets.symmetric(horizontal: 32),
           physics: BouncingScrollPhysics(),
           children: [
-            Center( child:Text("User settings", style: TextStyle(color: Colors.black45, fontSize: 25)),),
+            Center( child:Text("Uživatelský profil", style: TextStyle(color: Colors.black45, fontSize: 25)),),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween ,
               children: [
                 SizedBox(height: 100),
                 new Flexible( child:
                 TextFieldWidget(
-                  label: 'First Name',
+                  label: 'Jméno',
                   text: user.name,
                   onChanged: (name) {
                     user.name = name;
@@ -657,7 +378,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 SizedBox(width: 50),
                 new Flexible( child:
                 TextFieldWidget(
-                  label: 'Last Name',
+                  label: 'Příjmení',
                   text: user.surname,
                   onChanged: (surname) {
                     user.surname = surname;
@@ -680,7 +401,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 SizedBox(width: 50),
                 new Flexible( child:
                 TextFieldWidget(
-                  label: 'Telephone',
+                  label: 'Telefon',
                   text: user.telephone,
                   onChanged: (telephone) {
                     user.telephone = telephone;
@@ -694,7 +415,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 SizedBox(height: 100),
                 new Flexible( child:
                 TextFieldWidget(
-                  label: 'Street',
+                  label: 'Ulice',
                   text: user.address.street,
                   onChanged: (street) {
                     user.address.street = street;
@@ -703,7 +424,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 SizedBox(width: 50),
                 new Flexible( child:
                 TextFieldWidget(
-                  label: 'Streen number',
+                  label: 'Číslo domu',
                   text: user.address.number.toString(),
                   onChanged: (number) {
                     user.address.number = int.parse(number);
@@ -717,7 +438,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 SizedBox(height: 100),
                 new Flexible( child:
                 TextFieldWidget(
-                  label: 'City',
+                  label: 'Město',
                   text: user.address.city,
                   onChanged: (city) {
                     user.address.city = city;
@@ -726,7 +447,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 SizedBox(width: 50),
                 new Flexible( child:
                 TextFieldWidget(
-                  label: 'PSC',
+                  label: 'PSČ',
                   text: user.address.psc,
                   onChanged: (psc) {
                     user.address.psc = psc;
@@ -748,7 +469,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         textStyle: MaterialStateProperty.all<TextStyle>(
                             const TextStyle(color: Colors.white)),
                       ),
-                      child: Text ("Change password", style: const TextStyle(color: Colors.white)),
+                      child: Text ("Změnit heslo", style: const TextStyle(color: Colors.white)),
                       onPressed: () {}
                     )
                   )
@@ -762,7 +483,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         textStyle: MaterialStateProperty.all<TextStyle>(
                             const TextStyle(color: Colors.white)),
                       ),
-                      child: Text ("Save and return to Home", style: const TextStyle(color: Colors.white)),
+                      child: Text ("Uložit a vrátit se na úvodní stránku", style: const TextStyle(color: Colors.white)),
                       onPressed: () {
                         Navigator.pop(context);
                       }
