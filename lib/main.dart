@@ -142,7 +142,7 @@ List<Cleaner> services = [
   ["Zametání", "Vytírání", "Drhnutí podlah", "Prach", ]
   ),
 	  new Cleaner("Alex Novák", new Address("Koulova", "Praha 6", "160 00", "CZ", 1501),
-      new google.LatLng(50.11002963046619, 14.39375712377198), r'$', 5.0, [
+      new google.LatLng(50.11002963046619, 14.39375712377198), r'$$', 5.0, [
     "Po: 08-00-00 - 17-00-00",
     "Út: 08-00-00 - 17-00-00",
     "St: 08-00-00 - 17-00-00",
@@ -169,7 +169,7 @@ List<Cleaner> services = [
   ["Zametání", "Vytírání", "Drhnutí podlah", "Prach", ]
   ),
 	  new Cleaner("Alena Nováková", new Address("Koulova", "Praha 6", "160 00", "CZ", 1501),
-      new google.LatLng(50.11002963046619, 14.39375712377198), r'$', 5.0, [
+      new google.LatLng(50.11002963046619, 14.39375712377198), r'$$', 5.0, [
     "Po: 08-00-00 - 17-00-00",
     "Út: 08-00-00 - 17-00-00",
     "St: 08-00-00 - 17-00-00",
