@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:html';
 
+import 'package:date_field/date_field.dart';
 import 'package:cleaning/Components/CleanerCard.dart';
 import 'package:cleaning/Components/textfield_widget.dart';
 import 'package:cleaning/model/Address.dart';
@@ -510,49 +511,49 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Column(
               //mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(
-                //       vertical: 8.0, horizontal: 0.0),
-                //   child: SizedBox(
-                //     width: MediaQuery.of(context).size.width * 0.5,
-                //     child: Row(
-                //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                //         children: <Widget>[
-                //           SizedBox(
-                //             height: 50,
-                //             width: 250,
-                //             child: DateTimeFormField(
-                //               decoration: const InputDecoration(
-                //                 hintStyle: TextStyle(color: Colors.black45),
-                //                 errorStyle: TextStyle(color: Colors.redAccent),
-                //                 border: OutlineInputBorder(),
-                //                 suffixIcon: Icon(Icons.event_note),
-                //                 labelText: 'Pick a date and time',
-                //               ),
-                //               mode: DateTimeFieldPickerMode.dateAndTime,
-                //               autovalidateMode: AutovalidateMode.always,
-                //               validator: (e) => (e?.day ?? 0) == 1
-                //                   ? 'Please not the first day'
-                //                   : null,
-                //               onDateSelected: (DateTime value) {
-                //                 print(value);
-                //               },
-                //             ),
-                //           ),
-                //           const SizedBox(
-                //             height: 50,
-                //             width: 250,
-                //             child: TextField(
-                //               style: TextStyle(color: Colors.black45),
-                //               decoration: InputDecoration(
-                //                 border: OutlineInputBorder(),
-                //                 hintText: 'Enter a search term',
-                //               ),
-                //             ),
-                //           )
-                //         ]),
-                //   ),
-                // ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 8.0, horizontal: 0.0),
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          SizedBox(
+                            height: 50,
+                            width: 250,
+                            child: DateTimeFormField(
+                              decoration: const InputDecoration(
+                                hintStyle: TextStyle(color: Colors.black45),
+                                errorStyle: TextStyle(color: Colors.redAccent),
+                                border: OutlineInputBorder(),
+                                suffixIcon: Icon(Icons.event_note),
+                                labelText: 'Pick a date and time',
+                              ),
+                              mode: DateTimeFieldPickerMode.dateAndTime,
+                              autovalidateMode: AutovalidateMode.always,
+                              validator: (e) => (e?.day ?? 0) == 1
+                                  ? 'Please not the first day'
+                                  : null,
+                              onDateSelected: (DateTime value) {
+                                print(value);
+                              },
+                            ),
+                          ),
+                          // const SizedBox(
+                          //   height: 50,
+                          //   width: 250,
+                          //   child: TextField(
+                          //     style: TextStyle(color: Colors.black45),
+                          //     decoration: InputDecoration(
+                          //       border: OutlineInputBorder(),
+                          //       hintText: 'Enter a search term',
+                          //     ),
+                          //   ),
+                          // )
+                        ]),
+                  ),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
