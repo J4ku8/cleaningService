@@ -46,7 +46,7 @@ List<Cleaner> services = [
   [],
   [
     Service("Zametání", false, 500),
-    Service("Vytírání", false, 600),
+    Service("Vytírání", true, 600),
     Service("Vysávání", true, 450),
     Service("Leštění nábytku", true, 900),
     Service("Drhnutí podlah", false, 500),
@@ -55,10 +55,10 @@ List<Cleaner> services = [
     Service("Lustry", true, 700),
     Service("Prach", true, 800),
     Service("Čalounění", true, 1000),
-    Service("Mytí oken", false, 700),
+    Service("Mytí oken", true, 700),
     Service("Úklid po zvířatech", true, 600),
   ],
-  ["Vysávání", "Leštění nábytku", "Lustry", "Prach", "Čalounění", "Úklid po zvířatech", ]
+  ["Vysávání", "Vytírání", "Leštění nábytku", "Lustry", "Prach", "Čalounění", "Úklid po zvířatech", "Mytí oken" ]
   ),
     new Cleaner("Clean Delux", new Address("Na Pískách", "Praha 6", "160 00", "CZ", 74),
       new google.LatLng(50.10730466151188, 14.374263768143004), r'$$$', 5.0, [
