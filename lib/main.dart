@@ -173,6 +173,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   MaterialPageRoute(builder: (context) => const EditProfilePage()),
                 );
               },
+            ),
+            Padding(
+              padding: EdgeInsets.all(16.0),
             )
           ],
         ),
