@@ -32,6 +32,12 @@ class CleanerCardState extends State<CleanerCard> {
       }
     }
     picked.setServicesToFalse();
+    for(var i=0;i<picked.availableServices.length;i++){
+      if(widget.activeFilters.contains(picked.availableServices[i].name)){
+        picked.availableServices[i].state = true;
+      }
+    }
+
     return Container(
       decoration: BoxDecoration(
           color: Colors.white38,
@@ -275,11 +281,6 @@ class CleanerCardState extends State<CleanerCard> {
                                                                       (BuildContext
                                                                               context,
                                                                           int index) {
-                                                                        for(var i=0;i<picked.availableServices.length;i++){
-                                                                          if(widget.activeFilters.contains(picked.availableServices[i].name)){
-                                                                            picked.availableServices[i].state = true;
-                                                                          }
-                                                                        }
                                                                     return CheckboxListTile(
                                                                       title:
                                                                           Text(
@@ -362,14 +363,14 @@ class CleanerCardState extends State<CleanerCard> {
                                                     //   text = "Payed!";
                                                     // });
                                                     Future.delayed(
-                                                        Duration(seconds: 3),
+                                                        const Duration(seconds: 3),
                                                         () {
                                                       showDialog(
                                                           context: context,
                                                           builder: (BuildContext
                                                               context) {
                                                             Future.delayed(
-                                                              Duration(
+                                                              const Duration(
                                                                   seconds: 3),
                                                               () {
                                                                 int count = 0;

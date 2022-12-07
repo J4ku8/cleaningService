@@ -26,6 +26,14 @@ class Cleaner {
     });
   }
 
+  void setFilteredServicesToFalse(List<String> filtered){
+    availableServices.forEach((element) {
+      if(!filtered.contains(element.name)){
+        element.state = false;
+      }
+    });
+  }
+
   void setServicesToTrue() {
     availableServices.forEach((element) {
       element.state = true;
