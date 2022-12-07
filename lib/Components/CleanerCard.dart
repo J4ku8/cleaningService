@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:cleaning/main.dart';
 import 'package:cleaning/model/Cleaner.dart';
 import 'package:flutter/material.dart';
 
@@ -253,6 +254,7 @@ class CleanerCardState extends State<CleanerCard> {
                                                               } else {
                                                                 picked
                                                                     .setServicesToFalse();
+                                                                widget.activeFilters.clear();
                                                               }
                                                             },
                                                             controlAffinity:
@@ -273,6 +275,11 @@ class CleanerCardState extends State<CleanerCard> {
                                                                       (BuildContext
                                                                               context,
                                                                           int index) {
+                                                                        for(var i=0;i<picked.availableServices.length;i++){
+                                                                          if(widget.activeFilters.contains(picked.availableServices[i].name)){
+                                                                            picked.availableServices[i].state = true;
+                                                                          }
+                                                                        }
                                                                     return CheckboxListTile(
                                                                       title:
                                                                           Text(
@@ -285,17 +292,24 @@ class CleanerCardState extends State<CleanerCard> {
                                                                       ),
                                                                       autofocus:
                                                                           false,
-                                                                      value: widget
-                                                                          .activeFilters
-                                                                          .contains(picked
-                                                                              .availableServices[index]
-                                                                              .name),
+                                                                      value: picked
+                                                                          .availableServices[index]
+                                                                          .state,
                                                                       onChanged:
                                                                           (bool?
                                                                               newValue) {
-                                                                        setState(() => picked
+                                                                        setState(() {
+                                                                          if(widget.activeFilters.contains(picked
+                                                                              .availableServices[index]
+                                                                              .name) && newValue == false){
+                                                                            widget.activeFilters.remove(picked
+                                                                                .availableServices[index]
+                                                                                .name);
+                                                                          }
+                                                                          picked
                                                                             .availableServices[index]
-                                                                            .state = newValue);
+                                                                            .state = newValue;
+                                                                        });
                                                                       },
                                                                       controlAffinity:
                                                                           ListTileControlAffinity
