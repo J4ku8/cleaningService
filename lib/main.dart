@@ -33,7 +33,7 @@ List<String> cleaningOptions = [
 ];
 List<Cleaner> services = [
   new Cleaner("Uklízím celý den", new Address("Tahkulova", "Praha", "160 00", "CZ", 9),
-      new LtdLng(50.10501838533533, 14.388725717003036), r'$$', 5.0, [
+      new google.LatLng(50.10501838533533, 14.388725717003036), r'$$', 5.0, [
         "Po: 08-00-00 - 17-00-00",
         "Út: 08-00-00 - 17-00-00",
         "St: 08-00-00 - 17-00-00",
