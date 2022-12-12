@@ -30,6 +30,7 @@ class GoogleMapState extends State<GoogleMap> {
 
       final elem = DivElement()
         ..id = htmlId
+        ..style.color = "black"
         ..style.width = "100%"
         ..style.height = "100%"
         ..style.border = 'none';

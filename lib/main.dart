@@ -449,51 +449,41 @@ class _MyHomePageState extends State<MyHomePage> {
           title: const Text('Dáme úklid'),
           backgroundColor: Colors.green,
           actions: <Widget>[
-            IconButton(
-              icon: const Icon(
-                Icons.power_settings_new_sharp,
-                color: Colors.white,
-                size: 35,
-              ),
-              onPressed: () {
-                // do something
-              },
-            ),
-            IconButton(
-              icon: const Icon(
-                Icons.assignment_sharp,
-                color: Colors.white,
-                size: 35,
-              ),
-              onPressed: () {
-                // do something
-              },
-            ),
-            IconButton(
-              icon: const Icon(
-                Icons.bookmarks_sharp,
-                color: Colors.white,
-                size: 35,
-              ),
-              onPressed: () {
-                // do something
-              },
-            ),
-            IconButton(
-              icon: const Icon(
-                Icons.notifications_sharp,
-                color: Colors.white,
-                size: 35,
-              ),
-              onPressed: () {
-                // do something
-              },
-            ),
+            // IconButton(
+            //   icon: const Icon(
+            //     Icons.assignment_sharp,
+            //     color: Colors.white,
+            //     size: 35,
+            //   ),
+            //   onPressed: () {
+            //     // do something
+            //   },
+            // ),
+            // IconButton(
+            //   icon: const Icon(
+            //     Icons.bookmarks_sharp,
+            //     color: Colors.white,
+            //     size: 35,
+            //   ),
+            //   onPressed: () {
+            //     // do something
+            //   },
+            // ),
+            // IconButton(
+            //   icon: const Icon(
+            //     Icons.notifications_sharp,
+            //     color: Colors.white,
+            //     size: 35,
+            //   ),
+            //   onPressed: () {
+            //     // do something
+            //   },
+            // ),
             IconButton(
               icon: const Icon(
                 Icons.account_circle_sharp,
                 color: Colors.white,
-                size: 45,
+                size: 35,
               ),
               onPressed: () {
                 Navigator.push(
@@ -503,8 +493,19 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
             Padding(
-              padding: EdgeInsets.all(16.0),
-            )
+              padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 18),
+              child:
+              IconButton(
+                icon: const Icon(
+                  Icons.power_settings_new_sharp,
+                  color: Colors.white,
+                  size: 35,
+                ),
+                onPressed: () {
+                  // do something
+                },
+              ),
+            ),
           ],
         ),
         body: SingleChildScrollView(
