@@ -42,7 +42,7 @@ List<Cleaner> services = [
     "Pá: 08-00-00 - 14-00-00",
     "So: -",
     "Ne: -"
-  ], 
+  ],
   [],
   [
     Service("Zametání", false, 500),
@@ -69,7 +69,7 @@ List<Cleaner> services = [
     "Pá: 08-00-00 - 17-00-00",
     "So: -",
     "Ne: -"
-  ], 
+  ],
   [],
   [
     Service("Zametání", true, 500),
@@ -96,7 +96,7 @@ List<Cleaner> services = [
     "Pá: 08-00-00 - 18-00-00",
     "So: -",
     "Ne: -"
-  ], 
+  ],
   [],
   [
     Service("Zametání", false, 500),
@@ -123,7 +123,7 @@ List<Cleaner> services = [
     "Pá: 08-00-00 - 17-00-00",
     "So: -",
     "Ne: -"
-  ], 
+  ],
   [],
   [
     Service("Zametání", true, 100),
@@ -150,7 +150,7 @@ List<Cleaner> services = [
     "Pá: 08-00-00 - 17-00-00",
     "So: -",
     "Ne: -"
-  ], 
+  ],
   [],
   [
   Service("Zametání", true, 100),
@@ -177,7 +177,7 @@ List<Cleaner> services = [
     "Pá: 08-00-00 - 17-00-00",
     "So: -",
     "Ne: -"
-  ], 
+  ],
   [],
   [
     Service("Zametání", true, 100),
@@ -204,7 +204,7 @@ List<Cleaner> services = [
     "Pá: 07-30-00 - 18-00-00",
     "So: -",
     "Ne: -"
-  ], 
+  ],
   [],
   [
     Service("Zametání", false, 500),
@@ -231,7 +231,7 @@ List<Cleaner> services = [
     "Pá: 07-30-00 - 18-00-00",
     "So: -",
     "Ne: -"
-  ], 
+  ],
   [],
   [
     Service("Zametání", false, 500),
@@ -258,7 +258,7 @@ List<Cleaner> services = [
     "Pá: 07-30-00 - 18-00-00",
     "So: -",
     "Ne: -"
-  ], 
+  ],
   [],
   [
     Service("Zametání", false, 500),
@@ -285,7 +285,7 @@ List<Cleaner> services = [
     "Pá: 07-30-00 - 18-00-00",
     "So: -",
     "Ne: -"
-  ], 
+  ],
   [],
   [
     Service("Zametání", false, 500),
@@ -312,7 +312,7 @@ List<Cleaner> services = [
     "Pá: 07-30-00 - 18-00-00",
     "So: -",
     "Ne: -"
-  ], 
+  ],
   [],
   [
     Service("Zametání", false, 500),
@@ -339,7 +339,7 @@ List<Cleaner> services = [
     "Pá: 07-30-00 - 18-00-00",
     "So: -",
     "Ne: -"
-  ], 
+  ],
   [],
   [
     Service("Zametání", false, 500),
@@ -357,9 +357,9 @@ List<Cleaner> services = [
   ],
   ["Drhnutí podlah", "Čalounění" ]
   ),
-	
-	
-	
+
+
+
   new Cleaner("Ukliď to", new Address("Thákurova", "Praha 6", "160 00", "CZ", 2636),
       new google.LatLng(50.10465666455861, 14.387758918664646), r'$', 5.0, [
         "Po: 08-00-00 - 17-00-00",
@@ -386,8 +386,8 @@ List<Cleaner> services = [
         Service("Úklid po zvířatech", false, 250),
       ],
       ["Zametání", "Vytírání", "Vysávání", "Leštění nábytku", "Prach", "Čalounění", "Mytí oken"]
-  ),  
-	
+  ),
+
 ];
 
 User user = new User( 1, new LtdLng(50.10507707240193, 14.397699123936418), new Address("Terronská", "Praha 6", "160 00", "CZ", 1023), "_password", "Petr", "Adam", "petradam@example.com", "+420 737 542 111");
@@ -402,6 +402,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Dáme úklid',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.green,
         textTheme: Theme.of(context).textTheme.apply(
@@ -511,49 +512,49 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Column(
               //mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 8.0, horizontal: 0.0),
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          SizedBox(
-                            height: 50,
-                            width: 250,
-                            child: DateTimeFormField(
-                              decoration: const InputDecoration(
-                                hintStyle: TextStyle(color: Colors.black45),
-                                errorStyle: TextStyle(color: Colors.redAccent),
-                                border: OutlineInputBorder(),
-                                suffixIcon: Icon(Icons.event_note),
-                                labelText: 'Pick a date and time',
-                              ),
-                              mode: DateTimeFieldPickerMode.dateAndTime,
-                              autovalidateMode: AutovalidateMode.always,
-                              validator: (e) => (e?.day ?? 0) == 1
-                                  ? 'Please not the first day'
-                                  : null,
-                              onDateSelected: (DateTime value) {
-                                print(value);
-                              },
-                            ),
-                          ),
-                          // const SizedBox(
-                          //   height: 50,
-                          //   width: 250,
-                          //   child: TextField(
-                          //     style: TextStyle(color: Colors.black45),
-                          //     decoration: InputDecoration(
-                          //       border: OutlineInputBorder(),
-                          //       hintText: 'Enter a search term',
-                          //     ),
-                          //   ),
-                          // )
-                        ]),
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(
+                //       vertical: 8.0, horizontal: 0.0),
+                //   child: SizedBox(
+                //     width: MediaQuery.of(context).size.width * 0.5,
+                //     child: Row(
+                //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //         children: <Widget>[
+                //           SizedBox(
+                //             height: 50,
+                //             width: 250,
+                //             child: DateTimeFormField(
+                //               decoration: const InputDecoration(
+                //                 hintStyle: TextStyle(color: Colors.black45),
+                //                 errorStyle: TextStyle(color: Colors.redAccent),
+                //                 border: OutlineInputBorder(),
+                //                 suffixIcon: Icon(Icons.event_note),
+                //                 labelText: 'Pick a date and time',
+                //               ),
+                //               mode: DateTimeFieldPickerMode.dateAndTime,
+                //               autovalidateMode: AutovalidateMode.always,
+                //               validator: (e) => (e?.day ?? 0) == 1
+                //                   ? 'Please not the first day'
+                //                   : null,
+                //               onDateSelected: (DateTime value) {
+                //                 print(value);
+                //               },
+                //             ),
+                //           ),
+                //           // const SizedBox(
+                //           //   height: 50,
+                //           //   width: 250,
+                //           //   child: TextField(
+                //           //     style: TextStyle(color: Colors.black45),
+                //           //     decoration: InputDecoration(
+                //           //       border: OutlineInputBorder(),
+                //           //       hintText: 'Enter a search term',
+                //           //     ),
+                //           //   ),
+                //           // )
+                //         ]),
+                //   ),
+                // ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
