@@ -19,18 +19,18 @@ main() {
 }
 
 List<String> cleaningOptions = [
-    'Zametání',
-    'Vytírání',
-    'Vysávání',
-    'Leštění nábytku',
+    'Číštění Čalounění',
+    'Číštění Číštění Ventilace',
     'Drhnutí podlah',
-    'Ventilace',
-    'Zametení zahrady',
+    'Leštění nábytku',
     'Lustry',
-    'Prach',
-    'Čalounění',
     'Mytí oken',
     'Úklid po zvířatech',
+    'Utírání Prachu',
+    'Vysávání',
+    'Vytírání',
+    'Zametání',
+    'Zametení zahrady',
 ];
 List<Cleaner> services = [
   new Cleaner("Clean Royal", new Address("Kamenická", "Praha 7", "160 00", "CZ", 746),
@@ -45,20 +45,20 @@ List<Cleaner> services = [
   ],
   [],
   [
-    Service("Zametání", false, 500),
-    Service("Vytírání", true, 600),
-    Service("Vysávání", true, 450),
-    Service("Leštění nábytku", true, 900),
+    Service("Číštění Čalounění", true, 1000),
+    Service("Číštění Ventilace", false, 1000),
     Service("Drhnutí podlah", false, 500),
-    Service("Ventilace", false, 1000),
-    Service("Zametení zahrady", false, 1200),
+    Service("Leštění nábytku", true, 900),
     Service("Lustry", true, 700),
-    Service("Prach", true, 800),
-    Service("Čalounění", true, 1000),
     Service("Mytí oken", true, 700),
     Service("Úklid po zvířatech", true, 600),
+    Service("Utírání Utírání Prachuu", true, 800),
+    Service("Vysávání", true, 450),
+    Service("Vytírání", true, 600),
+    Service("Zametání", false, 500),
+    Service("Zametení zahrady", false, 1200),
   ],
-  ["Vysávání", "Vytírání", "Leštění nábytku", "Lustry", "Prach", "Čalounění", "Úklid po zvířatech", "Mytí oken" ]
+  ['Číštění Čalounění','Leštění nábytku','Lustry','Mytí oken','Úklid po zvířatech','Utírání Prachu','Vysávání','Vytírání' ]
   ),
     new Cleaner("Clean Delux", new Address("Na Pískách", "Praha 6", "160 00", "CZ", 74),
       new google.LatLng(50.10730466151188, 14.374263768143004), r'$$$', 5.0, [
@@ -77,15 +77,15 @@ List<Cleaner> services = [
     Service("Vysávání", false, 450),
     Service("Leštění nábytku", false, 900),
     Service("Drhnutí podlah", false, 500),
-    Service("Ventilace", false, 1000),
+    Service("Číštění Ventilace", false, 1000),
     Service("Zametení zahrady", false, 1200),
     Service("Lustry", false, 300),
-    Service("Prach", true, 800),
-    Service("Čalounění", false, 1000),
+    Service("Utírání Utírání Prachuu", true, 800),
+    Service("Číštění Čalounění", false, 1000),
     Service("Mytí oken", false, 700),
     Service("Úklid po zvířatech", false, 600),
   ],
-  ["Zametání", "Vytírání", "Prach", ]
+  ["Utírání Prachu", "Vytírání","Zametání"  ]
   ),
   new Cleaner("Umyj Okna", new Address("Cukrovarnická", "Praha 6", "160 00", "CZ", 112),
       new google.LatLng(50.0948349286697, 14.384315747939427), r'$$', 5.0, [
@@ -104,15 +104,15 @@ List<Cleaner> services = [
     Service("Vysávání", false, 450),
     Service("Leštění nábytku", false, 900),
     Service("Drhnutí podlah", false, 500),
-    Service("Ventilace", false, 1000),
+    Service("Číštění Ventilace", false, 1000),
     Service("Zametení zahrady", false, 1200),
     Service("Lustry", true, 300),
-    Service("Prach", false, 800),
-    Service("Čalounění", false, 1000),
+    Service("Utírání Prachu", false, 800),
+    Service("Číštění Čalounění", false, 1000),
     Service("Mytí oken", true, 700),
     Service("Úklid po zvířatech", false, 600),
   ],
-  ["Mytí oken", "Lustry"]
+  ["Lustry", "Mytí oken" ]
   ),
   new Cleaner("Petr Novák", new Address("Koulova", "Praha 6", "160 00", "CZ", 1501),
       new google.LatLng(50.11002963046619, 14.39375712377198), r'$$', 5.0, [
@@ -131,15 +131,15 @@ List<Cleaner> services = [
 	Service("Vysávání", false, 150),
 	Service("Leštění nábytku", false, 200),
 	Service("Drhnutí podlah", true, 200),
-	Service("Ventilace", false, 500),
+	Service("Číštění Ventilace", false, 500),
 	Service("Zametení zahrady", false, 150),
 	Service("Lustry", false, 300),
-	Service("Prach", true, 200),
-	Service("Čalounění", false, 500),
+	Service("Utírání Prachu", true, 200),
+	Service("Číštění Čalounění", false, 500),
 	Service("Mytí oken", false, 150),
 	Service("Úklid po zvířatech", false, 250),
   ],
-  ["Zametání", "Vytírání", "Drhnutí podlah", "Prach", ]
+  ["Drhnutí podlah", "Utírání Prachu", "Vytírání", "Zametání"]
   ),
 	  new Cleaner("Alex Novák", new Address("Koulova", "Praha 6", "160 00", "CZ", 1501),
       new google.LatLng(50.11002963046619, 14.39375712377198), r'$$', 5.0, [
@@ -158,15 +158,15 @@ List<Cleaner> services = [
 	Service("Vysávání", false, 150),
 	Service("Leštění nábytku", false, 200),
 	Service("Drhnutí podlah", true, 200),
-	Service("Ventilace", false, 500),
+	Service("Číštění Ventilace", false, 500),
 	Service("Zametení zahrady", false, 150),
 	Service("Lustry", false, 300),
-	Service("Prach", true, 200),
-	Service("Čalounění", false, 500),
+	Service("Utírání Prachu", true, 200),
+	Service("Číštění Čalounění", false, 500),
 	Service("Mytí oken", false, 150),
 	Service("Úklid po zvířatech", false, 250),
   ],
-  ["Zametání", "Vytírání", "Drhnutí podlah", "Prach", ]
+  ["Drhnutí podlah", "Utírání Prachu", "Vytírání", "Zametání"]
   ),
 	  new Cleaner("Alena Nováková", new Address("Koulova", "Praha 6", "160 00", "CZ", 1501),
       new google.LatLng(50.11002963046619, 14.39375712377198), r'$$', 5.0, [
@@ -185,15 +185,15 @@ List<Cleaner> services = [
 	Service("Vysávání", false, 150),
 	Service("Leštění nábytku", false, 200),
 	Service("Drhnutí podlah", true, 200),
-	Service("Ventilace", false, 500),
+	Service("Číštění Ventilace", false, 500),
 	Service("Zametení zahrady", false, 150),
 	Service("Lustry", false, 300),
-	Service("Prach", true, 200),
-	Service("Čalounění", false, 500),
+	Service("Utírání Prachu", true, 200),
+	Service("Číštění Čalounění", false, 500),
 	Service("Mytí oken", false, 150),
 	Service("Úklid po zvířatech", false, 250),
   ],
-  ["Zametání", "Vytírání", "Drhnutí podlah", "Prach", ]
+  ["Drhnutí podlah", "Utírání Prachu", "Vytírání", "Zametání"]
   ),
     new Cleaner("Jako nové", new Address("V Středu", "Praha 6", "160 00", "CZ", 15),
       new google.LatLng(50.09851187802411, 14.345064873000604), r'$$', 5.0, [
@@ -212,15 +212,15 @@ List<Cleaner> services = [
     Service("Vysávání", false, 450),
     Service("Leštění nábytku", false, 900),
     Service("Drhnutí podlah", true, 200),
-    Service("Ventilace", false, 1000),
+    Service("Číštění Ventilace", false, 1000),
     Service("Zametení zahrady", false, 1200),
     Service("Lustry", false, 300),
-    Service("Prach", false, 800),
-    Service("Čalounění", true, 450),
+    Service("Utírání Prachu", false, 800),
+    Service("Číštění Čalounění", true, 450),
     Service("Mytí oken", false, 700),
     Service("Úklid po zvířatech", false, 600),
   ],
-  ["Drhnutí podlah", "Čalounění" ]
+  ["Číštění Čalounění", "Drhnutí podlah" ]
   ),
 	  new Cleaner("Jako nové 2", new Address("V Středu", "Praha 6", "160 00", "CZ", 15),
       new google.LatLng(50.09851187802411, 14.345064873000604), r'$$', 5.0, [
@@ -239,15 +239,15 @@ List<Cleaner> services = [
     Service("Vysávání", false, 450),
     Service("Leštění nábytku", false, 900),
     Service("Drhnutí podlah", true, 200),
-    Service("Ventilace", false, 1000),
+    Service("Číštění Ventilace", false, 1000),
     Service("Zametení zahrady", false, 1200),
     Service("Lustry", false, 300),
-    Service("Prach", false, 800),
-    Service("Čalounění", true, 450),
+    Service("Utírání Prachu", false, 800),
+    Service("Číštění Čalounění", true, 450),
     Service("Mytí oken", false, 700),
     Service("Úklid po zvířatech", false, 600),
   ],
-  ["Drhnutí podlah", "Čalounění" ]
+  ["Číštění Čalounění", "Drhnutí podlah"  ]
   ),
 	  new Cleaner("Jako nové 3", new Address("V Středu", "Praha 6", "160 00", "CZ", 15),
       new google.LatLng(50.09851187802411, 14.345064873000604), r'$$', 5.0, [
@@ -266,15 +266,15 @@ List<Cleaner> services = [
     Service("Vysávání", false, 450),
     Service("Leštění nábytku", false, 900),
     Service("Drhnutí podlah", true, 200),
-    Service("Ventilace", false, 1000),
+    Service("Číštění Ventilace", false, 1000),
     Service("Zametení zahrady", false, 1200),
     Service("Lustry", false, 300),
-    Service("Prach", false, 800),
-    Service("Čalounění", true, 450),
+    Service("Utírání Prachu", false, 800),
+    Service("Číštění Čalounění", true, 450),
     Service("Mytí oken", false, 700),
     Service("Úklid po zvířatech", false, 600),
   ],
-  ["Drhnutí podlah", "Čalounění" ]
+  ["Číštění Čalounění", "Drhnutí podlah"  ]
   ),
     new Cleaner("Jako nové 4", new Address("V Středu", "Praha 6", "160 00", "CZ", 15),
       new google.LatLng(50.09851187802411, 14.345064873000604), r'$$', 5.0, [
@@ -293,15 +293,15 @@ List<Cleaner> services = [
     Service("Vysávání", false, 450),
     Service("Leštění nábytku", false, 900),
     Service("Drhnutí podlah", true, 200),
-    Service("Ventilace", false, 1000),
+    Service("Číštění Ventilace", false, 1000),
     Service("Zametení zahrady", false, 1200),
     Service("Lustry", false, 300),
-    Service("Prach", false, 800),
-    Service("Čalounění", true, 450),
+    Service("Utírání Prachu", false, 800),
+    Service("Číštění Čalounění", true, 450),
     Service("Mytí oken", false, 700),
     Service("Úklid po zvířatech", false, 600),
   ],
-  ["Drhnutí podlah", "Čalounění" ]
+  ["Číštění Čalounění", "Drhnutí podlah"  ]
   ),
 	  new Cleaner("Jako nové 5", new Address("V Středu", "Praha 6", "160 00", "CZ", 15),
       new google.LatLng(50.09851187802411, 14.345064873000604), r'$$', 5.0, [
@@ -320,15 +320,15 @@ List<Cleaner> services = [
     Service("Vysávání", false, 450),
     Service("Leštění nábytku", false, 900),
     Service("Drhnutí podlah", true, 200),
-    Service("Ventilace", false, 1000),
+    Service("Číštění Ventilace", false, 1000),
     Service("Zametení zahrady", false, 1200),
     Service("Lustry", false, 300),
-    Service("Prach", false, 800),
-    Service("Čalounění", true, 450),
+    Service("Utírání Prachu", false, 800),
+    Service("Číštění Čalounění", true, 450),
     Service("Mytí oken", false, 700),
     Service("Úklid po zvířatech", false, 600),
   ],
-  ["Drhnutí podlah", "Čalounění" ]
+  ["Číštění Čalounění", "Drhnutí podlah"  ]
   ),
 	  new Cleaner("Jako nové 6", new Address("V Středu", "Praha 6", "160 00", "CZ", 15),
       new google.LatLng(50.09851187802411, 14.345064873000604), r'$$', 5.0, [
@@ -347,15 +347,15 @@ List<Cleaner> services = [
     Service("Vysávání", false, 450),
     Service("Leštění nábytku", false, 900),
     Service("Drhnutí podlah", true, 200),
-    Service("Ventilace", false, 1000),
+    Service("Číštění Ventilace", false, 1000),
     Service("Zametení zahrady", false, 1200),
     Service("Lustry", false, 300),
-    Service("Prach", false, 800),
-    Service("Čalounění", true, 450),
+    Service("Utírání Prachu", false, 800),
+    Service("Číštění Čalounění", true, 450),
     Service("Mytí oken", false, 700),
     Service("Úklid po zvířatech", false, 600),
   ],
-  ["Drhnutí podlah", "Čalounění" ]
+  ["Číštění Čalounění", "Drhnutí podlah"  ]
   ),
 
 
@@ -377,15 +377,15 @@ List<Cleaner> services = [
         Service("Vysávání", true, 150),
         Service("Leštění nábytku", true, 200),
         Service("Drhnutí podlah", false, 200),
-        Service("Ventilace", false, 500),
+        Service("Číštění Ventilace", false, 500),
         Service("Zametení zahrady", false, 150),
         Service("Lustry", false, 300),
-        Service("Prach", true, 180),
-        Service("Čalounění", true, 500),
+        Service("Utírání Prachu", true, 180),
+        Service("Číštění Čalounění", true, 500),
         Service("Mytí oken", true, 150),
         Service("Úklid po zvířatech", false, 250),
       ],
-      ["Zametání", "Vytírání", "Vysávání", "Leštění nábytku", "Prach", "Čalounění", "Mytí oken"]
+      ['Číštění Čalounění','Leštění nábytku','Mytí oken','Utírání Prachu','Vysávání','Vytírání','Zametání',]
   ),
 
 ];
